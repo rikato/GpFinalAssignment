@@ -2,11 +2,9 @@
 
 int main(void)
 {
-    Application* application;
+    Application application;
 
-    application = new Application();
-
-    application->Start();
+    application.Start();
 
     return 0;
 }
