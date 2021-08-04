@@ -3,10 +3,10 @@
 #include "Renderer.h"
 
 Window::Window()
+    :scene(nullptr), glfwWindow(nullptr)
 {
     if (!glfwInit())
         return;
-
 
     glfwWindow = glfwCreateWindow(800, 600, "Graphics programming final assignment", NULL, NULL);
 
