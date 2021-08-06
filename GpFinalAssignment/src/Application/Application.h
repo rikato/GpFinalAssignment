@@ -1,16 +1,17 @@
 #pragma once
-#include "Window.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "Scene.h"
 
 class Application 
 {
 public:
-	Window window;
-
 	Application();
 	~Application();
 
 	void Start();
 
-private:
-	bool isRunning = true;
+private: 
+	GLFWwindow* glfwWindow;
+	Scene* scene;
 };
