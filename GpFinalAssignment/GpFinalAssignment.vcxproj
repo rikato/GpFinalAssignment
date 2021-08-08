@@ -178,6 +178,7 @@
     <ClInclude Include="src\Renderer\Mesh.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\vendor\glsl\glsl.h" />
+    <ClInclude Include="src\World\Lander.h" />
     <ClInclude Include="src\World\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />
     <ClInclude Include="src\Renderer\Shader.h" />
@@ -614,6 +615,9 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\textures\autobus.bmp" />
+    <Image Include="assets\textures\Material__7_albedo.bmp" />
+    <Image Include="assets\textures\spaceship.bmp" />
     <Image Include="assets\textures\wall.png" />
     <Image Include="assets\textures\Yellobrk.bmp" />
   </ItemGroup>

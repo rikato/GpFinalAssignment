@@ -25,6 +25,7 @@ void Camera::Update(double deltaTime)
 	if (glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
 	{
 		// TODO: move camera to position that has a nice overview of the scene.
+		// TODO: store prev location when drone mode is disabled.
 		m_DroneMode = !m_DroneMode;
 	}
 
@@ -51,7 +52,7 @@ void Camera::Update(double deltaTime)
 	double mousePosX, mousePosY;
 
 	glfwGetCursorPos(m_Window, &mousePosX, &mousePosY);
-	//Rotate(mousePosX, mousePosY);
+	Rotate(mousePosX, mousePosY);
 }
 
 void Camera::Translate(double deltaTime)

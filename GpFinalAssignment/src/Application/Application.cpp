@@ -53,6 +53,9 @@ void Application::Start()
     glEnable(GL_BLEND);
     glDisable(GL_CULL_FACE);
 
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
     Renderer renderer;
     Scene scene(m_GlfwWindow);
 

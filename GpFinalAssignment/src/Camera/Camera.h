@@ -17,7 +17,7 @@ private:
 	GLFWwindow* m_Window;
 
 	float m_Sensitivity = 0.1f;
-	float m_MovementSpeed = 1.0f;
+	float m_MovementSpeed = 3.0f;
 	float m_Pitch = 90.0f;
 	float m_Yaw = 0.0f;
 	float m_LastX = 800.0f / 2.0;

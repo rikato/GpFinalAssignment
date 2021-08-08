@@ -9,11 +9,14 @@ Mesh::Mesh(const std::string& path)
     :m_Vao(0)
 {
     // Load the object file.
-    if (loadOBJ(&path[0], m_Vertices, m_Normals, m_Uvs)) 
-    {
-        // After succesfully loading the object, create it.
-        Create();
-    }
+    loadOBJ(&path[0], m_Vertices, m_Uvs, m_Normals);
+}
+
+void Mesh::SetShader(Shader* shader)
+{
+    m_Shader = shader;
+
+    Create();
 }
 
 void Mesh::Draw()
@@ -25,23 +28,53 @@ void Mesh::Draw()
 
 void Mesh::Create()
 {
-    unsigned int vbo;
+    unsigned int vboVertices, vboNormals, vboUvs;
 
-    // Bind vao.
-    glGenVertexArrays(1, &m_Vao);
-    glBindVertexArray(m_Vao);
+    // Get vertex attributes
+    unsigned int position_id = glGetAttribLocation(m_Shader->m_RendererId, "position");
+    unsigned int normal_id = glGetAttribLocation(m_Shader->m_RendererId, "normal");
+    unsigned int uv_id = glGetAttribLocation(m_Shader->m_RendererId, "uv");
 
     // vbo vertices.
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glGenBuffers(1, &vboVertices);
+    glBindBuffer(GL_ARRAY_BUFFER, vboVertices);
     glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(glm::vec3), &m_Vertices[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    // Now bind the vbo to the vao.
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    // vbo vertices.
+    glGenBuffers(1, &vboNormals);
+    glBindBuffer(GL_ARRAY_BUFFER, vboNormals);
+    glBufferData(GL_ARRAY_BUFFER, m_Normals.size() * sizeof(glm::vec3), &m_Normals[0], GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    // vbo vertices.
+    glGenBuffers(1, &vboUvs);
+    glBindBuffer(GL_ARRAY_BUFFER, vboUvs);
+    glBufferData(GL_ARRAY_BUFFER, m_Uvs.size() * sizeof(glm::vec2), &m_Uvs[0], GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    glGenVertexArrays(1, &m_Vao);
+    glBindVertexArray(m_Vao);
+
+    // Now bind the vertices vbo to the vao.
+    glBindBuffer(GL_ARRAY_BUFFER, vboVertices);
     // Use '0' as stride, since vertices are in single array.
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(position_id, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(position_id);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    // Now bind the vertices vbo to the vao.
+    glBindBuffer(GL_ARRAY_BUFFER, vboNormals);
+    // Use '0' as stride, since vertices are in single array.
+    glVertexAttribPointer(normal_id, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(normal_id);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    // Now bind the vertices vbo to the vao.
+    glBindBuffer(GL_ARRAY_BUFFER, vboUvs);
+    // Use '0' as stride, since vertices are in single array.
+    glVertexAttribPointer(uv_id, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(uv_id);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     glBindVertexArray(0);

@@ -968,6 +968,9 @@
     <ClInclude Include="src\Renderer\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\World\Lander.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1388,6 +1391,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\Yellobrk.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\autobus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\spaceship.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\Material__7_albedo.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

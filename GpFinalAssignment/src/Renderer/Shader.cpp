@@ -54,7 +54,7 @@ void Shader::SetUniform3fv(const std::string& name, glm::vec3 value)
 {
 	unsigned int location = GetUniformLocation(name);
 
-	glUniform3fv(location, 1, glm::value_ptr(value));
+	glUniform3fv(location, 1, &value[0]);
 }
 
 void Shader::SetUniform1i(const std::string& name, int value)
@@ -103,6 +103,11 @@ void Shader::UnBind() const
 void Shader::UpdateMv(glm::mat4 matrix)
 {
 	SetUniformMat4f("mv", matrix);
+
+	SetUniform3fv("materialAmbientColor", glm::vec3(0.3, 0.3, 0.3));
+	SetUniform3fv("materialDiffuseColor", glm::vec3(1, 1, 1));
+	SetUniform3fv("materialSpecularColor", glm::vec3(0, 0, 0));
+	SetUniform1f("materialRoughness", 1024);
 }
 
 void Shader::UpdateProjection(glm::mat4 matrix)
@@ -112,10 +117,5 @@ void Shader::UpdateProjection(glm::mat4 matrix)
 
 void Shader::SetDiffuseMap(int value)
 {
-	SetUniform3fv("materialAmbientColor", glm::vec3(1, .5, .5));
-	SetUniform3fv("materialDiffuseColor", glm::vec3(1, .5, .5));
-	SetUniform3fv("materialSpecularColor", glm::vec3(.5, .5, .5));
-	SetUniform1f("materialRoughness", 123);
-
 	SetUniform1i("diffuseMap", value);
 }
