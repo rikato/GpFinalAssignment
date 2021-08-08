@@ -34,6 +34,7 @@ Scene::Scene()
 	//Texture texture("res/textures/wall.png");
 	
 	shader = new Shader("res/shaders/Basic.shader");
+
 	
 	shader->Bind();
 	shader->SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
