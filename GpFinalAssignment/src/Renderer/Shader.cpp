@@ -1,8 +1,10 @@
-#include <glad/glad.h>
 #include "Shader.h"
+
+#include <glad/glad.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
 #include "Renderer.h"
 
 Shader::Shader(const::std::string& filePath)

@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include <glad/glad.h>
-#include "Renderer.h"
+
+#include "../Renderer/Renderer.h"
 
 struct VertextBufferElement 
 {

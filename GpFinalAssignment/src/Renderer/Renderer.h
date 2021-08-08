@@ -1,6 +1,6 @@
 #pragma once
-#include "VertexArray.h"
-#include "IndexBuffer.h"
+#include "../Helpers/VertexArray.h"
+#include "../Helpers/IndexBuffer.h"
 #include "Shader.h"
 
 #define ASSERT(x) if(!(x)) __debugbreak();

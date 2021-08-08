@@ -1,6 +1,8 @@
 #include "Application.h"
+
 #include <iostream>
-#include "Renderer.h"
+
+#include "../Renderer/Renderer.h"
 
 Application::Application()
 {
@@ -34,7 +36,7 @@ Application::Application()
 
     glViewport(0, 0, 800, 600);
 
-    scene = new Scene();
+    scene = new Scene(glfwWindow);
 }
 
 Application::~Application()
@@ -49,6 +51,11 @@ void Application::Start()
     while (!glfwWindowShouldClose(glfwWindow))
     {
         renderer.Clear();
+
+        scene->camera->Update();
+
+        scene->shader->Bind();
+        scene->shader->SetUniformMat4f("MVP", scene->camera->GetMVP());
 
         renderer.Draw(*scene->va, *scene->ib , *scene->shader);
 

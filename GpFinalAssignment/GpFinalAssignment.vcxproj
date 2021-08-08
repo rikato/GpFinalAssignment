@@ -153,30 +153,29 @@
   <ItemGroup>
     <ClCompile Include="..\Dependencies\Glad\src\glad.c" />
     <ClCompile Include="src\Application\Application.cpp" />
-    <ClCompile Include="src\Application\Camera.cpp" />
-    <ClCompile Include="src\Application\IndexBuffer.cpp" />
-    <ClCompile Include="src\Application\Renderer.cpp" />
-    <ClCompile Include="src\Application\Scene.cpp" />
-    <ClCompile Include="src\Application\Shader.cpp" />
-    <ClCompile Include="src\Application\Texture.cpp" />
-    <ClCompile Include="src\Application\VertexArray.cpp" />
-    <ClCompile Include="src\Application\VertexBuffer.cpp" />
-    <ClCompile Include="src\Application\VertexBufferLayout.cpp" />
+    <ClCompile Include="src\Camera\Camera.cpp" />
+    <ClCompile Include="src\Helpers\IndexBuffer.cpp" />
+    <ClCompile Include="src\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Scene\Scene.cpp" />
+    <ClCompile Include="src\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Helpers\VertexArray.cpp" />
+    <ClCompile Include="src\Helpers\VertexBuffer.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\stb_image\stb_iamge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h" />
-    <ClInclude Include="src\Application\Camera.h" />
-    <ClInclude Include="src\Application\IndexBuffer.h" />
-    <ClInclude Include="src\Application\Renderer.h" />
-    <ClInclude Include="src\Application\Scene.h" />
-    <ClInclude Include="src\Application\Shader.h" />
-    <ClInclude Include="src\Application\VertexArray.h" />
-    <ClInclude Include="src\Application\VertexBuffer.h" />
-    <ClInclude Include="src\Application\VertexBufferLayout.h" />
-    <ClInclude Include="src\Application\Texture.h" />
+    <ClInclude Include="src\Camera\Camera.h" />
+    <ClInclude Include="src\Helpers\IndexBuffer.h" />
+    <ClInclude Include="src\Renderer\Renderer.h" />
+    <ClInclude Include="src\Scene\Scene.h" />
+    <ClInclude Include="src\Renderer\Shader.h" />
+    <ClInclude Include="src\Helpers\VertexArray.h" />
+    <ClInclude Include="src\Helpers\VertexBuffer.h" />
+    <ClInclude Include="src\Helpers\VertexBufferLayout.h" />
+    <ClInclude Include="src\Renderer\Texture.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
@@ -462,7 +461,7 @@
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
+    <None Include="assets\shaders\Basic.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />
@@ -601,7 +600,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\textures\wall.png" />
+    <Image Include="assets\textures\wall.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

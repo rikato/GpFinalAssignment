@@ -1,6 +1,9 @@
-#include <iostream>
 #include "Texture.h"
+
+#include <iostream>
+
 #include "stb_image/stb_image.h"
+
 #include "Renderer.h"
 
 Texture::Texture(const std::string& path)

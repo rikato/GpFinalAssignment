@@ -1,10 +1,11 @@
-#include "Scene.h"
-#include "Texture.h"
-#include "Renderer.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
-Scene::Scene() 
+#include "Scene.h"
+#include "../Renderer/Texture.h"
+#include "../Renderer/Renderer.h"
+
+Scene::Scene(GLFWwindow *window) 
 {
 	float vertices[20] = 
 	{
@@ -33,20 +34,12 @@ Scene::Scene()
 	// Todo: texture class does not work on certain machines. Don't know why...
 	//Texture texture("res/textures/wall.png");
 	
-	shader = new Shader("res/shaders/Basic.shader");
+	shader = new Shader("assets/shaders/Basic.shader");
 	
 	shader->Bind();
 	shader->SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 
-	glm::mat4 proj = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 2000.0f);;
-	glm::mat4 view = glm::translate(glm::mat4(1.0), glm::vec3(-150.0f, -20.0f, -800.0f));
-	glm::mat4 model = glm::translate(glm::mat4(1.0), glm::vec3(0.0f, 0.0f, 0.0f));
-	model = glm::rotate(model, glm::radians(45.f), glm::vec3(1.0f, 1.0f, 1.0f));
-
-	glm::mat4 mvp = proj * view * model;
-
-	shader->Bind();
-	shader->SetUniformMat4f("MVP", mvp);
+	camera = new Camera(glm::vec3(0,0,0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), window);
 
 	va->UnBind();
 	vb->Unbind();
