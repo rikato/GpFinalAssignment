@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Texture.h"
-#include "../vendor/stb_image/stb_image.h"
+#include "stb_image/stb_image.h"
+#include "Renderer.h"
 
 Texture::Texture(const std::string& path)
 	: filePath(path), localBuffer(nullptr), 
@@ -10,18 +11,18 @@ Texture::Texture(const std::string& path)
 	stbi_set_flip_vertically_on_load(1);
 	localBuffer = stbi_load(path.c_str(), &width, &height, &BPP, 4);
 
-	glGenTextures(1, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	GLCall(	(1, 0));
+	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 
 	// These 4 params need to specified!
-	glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP);
+	GLCall(glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
+	GLCall(glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+	GLCall(glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP));
+	GLCall(glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP));
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer));
+	GLCall(glGenerateMipmap(GL_TEXTURE_2D));
+	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 
 	if (localBuffer) 
 	{
@@ -40,11 +41,11 @@ Texture::~Texture()
 
 void Texture::Bind(unsigned int slot) const
 {
-	glActiveTexture(GL_TEXTURE0 + slot);
-	glBindTexture(GL_TEXTURE_2D, texture);
+	GLCall(glActiveTexture(GL_TEXTURE0 + slot));
+	GLCall(glBindTexture(GL_TEXTURE_2D, texture));
 }
 
 void Texture::UnBind()
 {
-	glBindTexture(GL_TEXTURE_2D, 0);
+	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }
