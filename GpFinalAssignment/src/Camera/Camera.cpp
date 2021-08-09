@@ -4,7 +4,6 @@
 
 #include "glm/gtc/matrix_transform.hpp"
 
-
 Camera::Camera(glm::vec3 position, GLFWwindow* window)
 	: m_Position((0, 0, 0)), m_Window(nullptr)
 {
@@ -17,47 +16,6 @@ Camera::Camera(glm::vec3 position, GLFWwindow* window)
 Camera::~Camera()
 {
 
-}
-
-void Camera::Update(double deltaTime)
-{
-	// Toggle drone mode when user presses 'v'.
-	if (glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
-	{
-		// TODO: move camera to position that has a nice overview of the scene.
-		// TODO: store prev location when drone mode is disabled.
-		m_DroneMode = !m_DroneMode;
-	}
-
-	/* Check wether drone mode is set,
-	if it is not set then the y position
-	is fixed, simulating a human pov.
-	When it is activated we keep the camera
-	above the floor. */
-	if (m_DroneMode)
-	{
-		if (m_Position.y < 0)
-		{
-			m_Position.y = 0;
-		}
-	}
-	else
-	{
-		// Starting point is on the street (~1,75m from the ground).
-		// I have put the camera a little lower since my ground is not even.
-		m_Position.y = 1.10f;
-	}
-
-	Translate(deltaTime);
-
-	// Get the position of the cursor, we use this to rotate the camera.
-	double *cursorPosition = GetMousePositions();
-
-	// Rotate camere based on x, y position of the mouse.
-	Rotate(cursorPosition[0], cursorPosition[1]);
-
-	// Update last x and last y positions based on keyboard input.
-	RotateUsingKeyboard();
 }
 
 double* Camera::GetMousePositions()
@@ -146,11 +104,11 @@ void Camera::Rotate(double xPos, double yPos)
 	m_Yaw += xOffset;
 	m_Pitch += yOffset;
 
-	if (m_Pitch > 89.0f) 
+	if (m_Pitch > 89.0f)
 	{
 		m_Pitch = 89.0f;
 	}
-	if (m_Pitch < -89.0f) 
+	if (m_Pitch < -89.0f)
 	{
 		m_Pitch = -89.0f;
 	}
@@ -162,6 +120,59 @@ void Camera::Rotate(double xPos, double yPos)
 	));
 
 	m_Side = glm::normalize(glm::cross(m_Front, m_Up));
+}
+
+void Camera::Update(double deltaTime)
+{
+	// Check wether user wants to toggle drone mode by pressing 'v'.
+	if (glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
+	{
+		// Toggle drone mode.
+		m_DroneMode = !m_DroneMode;
+		
+		// If drone mode is enabled store the latest location
+		if (m_DroneMode)
+		{
+			m_LastPosition = m_Position;
+			m_Position = glm::vec3(-3, 8, -6);
+			m_Pitch = -35;
+			m_Yaw = 75;
+		}
+		// Otherwise when drone mode is disabled restore latest location.
+		else 
+		{
+			// Return when drone mode gets disabled.
+			m_Position = m_LastPosition;
+		}
+	}
+
+	// Check for level boundries.
+	if (m_DroneMode)
+	{
+		// When camera goes below the map reset it's position to '0'.
+		if (m_Position.y < 0)
+		{
+			m_Position.y = 0;
+		}
+	}
+	else
+	{
+		// Starting point is on the street (~1,75m from the ground).
+		// Since the ground is not even the user perspective is a little lower.
+		m_Position.y = 1.10f;
+	}
+
+	// Translate the camera position based on keyboard intput (WASD).
+	Translate(deltaTime);
+
+	// Get the position of the cursor, we use this to rotate the camera.
+	double *cursorPosition = GetMousePositions();
+
+	// Rotate camere based on x, y position of the mouse.
+	Rotate(cursorPosition[0], cursorPosition[1]);
+
+	// Update last x and last y positions based on keyboard input (IJKL).
+	RotateUsingKeyboard();
 }
 
 glm::mat4 Camera::GetProjectionMatrix() const

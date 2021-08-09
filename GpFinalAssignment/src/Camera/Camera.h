@@ -6,6 +6,8 @@ class Camera {
 private:
 	// Position of the camera.
 	glm::vec3 m_Position;
+	// Used to store last known location before entering drone mode.
+	glm::vec3 m_LastPosition;
 	// Front direction relative to camera.
 	glm::vec3 m_Front = glm::vec3(0.0f, 0.0f, 1.0f);
 	// Up direction relative to camera.
