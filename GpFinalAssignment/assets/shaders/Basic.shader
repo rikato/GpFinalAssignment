@@ -27,6 +27,6 @@ uniform vec4 u_Color;
 
 void main()
 {
-	FragColor = texture(ourTexture, TexCoord);
+	//FragColor = texture(ourTexture, TexCoord);
 	color = u_Color;
 };

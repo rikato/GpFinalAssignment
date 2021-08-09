@@ -14,7 +14,7 @@ Texture::Texture(const std::string& path)
 	stbi_set_flip_vertically_on_load(1);
 	localBuffer = stbi_load(path.c_str(), &width, &height, &BPP, 4);
 
-	GLCall(	(1, 0));
+	GLCall((1, 0));
 	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 
 	// These 4 params need to specified!

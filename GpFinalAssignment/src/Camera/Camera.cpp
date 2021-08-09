@@ -14,13 +14,14 @@ Camera::Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 front, glm::ve
 	this->up = up;
 	this->window = window;
 
-	this->position.x = -150;
-	this->position.y = -20;
-	this->position.z = -1000;
+	this->position.x = 0;
+	this->position.y = 0;
+	this->position.z = -10;
 
 	this->mvp.projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 10000.0f);
 	this->mvp.view = glm::translate(glm::mat4(1.0), glm::vec3(this->position));
 	this->mvp.model = glm::translate(glm::mat4(1.0), glm::vec3(0.0f, 0.0f, 0.0f));
+	//this->mvp.model = glm::scale(glm::mat4(1.0), glm::vec3(10.0f, 10.0f, 10.0f));
 }
 
 Camera::~Camera()

@@ -45,3 +45,8 @@ void VertexArray::UnBind() const
 {
 	GLCall(glBindVertexArray(0));
 }
+
+int VertexArray::GetRendererId() const
+{
+	return this->rendererId;
+}
