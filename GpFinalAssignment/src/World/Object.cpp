@@ -15,9 +15,9 @@ Object::~Object()
 	delete this->shader;
 }
 
-void Object::Update(glm::mat4 mvMatrix, glm::mat4 projectionMatrix)
+void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
 {
-	this->shader->updateMv(mvMatrix * this->transform);
+	this->shader->updateMv(viewMatrix * this->transform);
 	this->shader->updateProjection(projectionMatrix);
 
 	this->mesh->Draw();

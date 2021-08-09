@@ -1,5 +1,5 @@
 #include "Scene.h"
-#include "../Helpers/Mesh.h"
+#include "../World/Teapot.h"
 
 Scene::Scene(GLFWwindow *window) 
 {
@@ -7,9 +7,7 @@ Scene::Scene(GLFWwindow *window)
 	this->camera = new Camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), window);
 
 	// Create the teapot.
-	Shader* teapotShader = new Shader("");
-	Mesh* teapotMesh = new Mesh("assets/models/teapot/teapot.obj");
-	Object* teapot = new Object(teapotMesh, teapotShader);
+	Teapot* teapot = new Teapot();
 
 	this->objects.push_back(teapot);
 }

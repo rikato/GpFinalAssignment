@@ -8,7 +8,7 @@ public:
 	Object(Mesh* mesh, Shader* shader);
 	~Object();
 
-	void Update(glm::mat4 mvMatrix, glm::mat4 projectionMatrix);
+	void Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix);
 
 	Mesh* mesh;
 	Shader* shader;
