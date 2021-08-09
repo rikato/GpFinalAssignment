@@ -46,7 +46,8 @@ void Camera::Update(double deltaTime)
 	else 
 	{
 		// Starting point is on the street (~1,75m from the ground).
-		m_Position.y = 1.75f;
+		// I have put the camera a little lower since my ground is not even.
+		m_Position.y = 1.10f;
 	}
 
 	double mousePosX, mousePosY;

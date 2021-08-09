@@ -179,6 +179,7 @@
     <ClInclude Include="src\Renderer\Mesh.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\vendor\glsl\glsl.h" />
+    <ClInclude Include="src\World\Flag.h" />
     <ClInclude Include="src\World\Lander.h" />
     <ClInclude Include="src\World\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />
