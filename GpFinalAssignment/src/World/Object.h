@@ -1,6 +1,6 @@
 #pragma once
 #include "glm/glm.hpp" 
-#include "../Helpers/Mesh.h" 
+#include "../Renderer/Mesh.h" 
 #include "../Renderer/Shader.h"
 
 class Object {
@@ -10,7 +10,7 @@ public:
 
 	void Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix);
 
-	Mesh* mesh;
-	Shader* shader;
-	glm::mat4 transform;
+	Mesh* m_Mesh;
+	Shader* m_Shader;
+	glm::mat4 m_Transform;
 };

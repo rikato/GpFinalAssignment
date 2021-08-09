@@ -60,7 +60,7 @@
     <ClCompile Include="src\World\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Helpers\Mesh.cpp">
+    <ClCompile Include="src\Renderer\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\vendor\glsl\glsl.cpp">
@@ -953,7 +953,7 @@
     <ClInclude Include="src\World\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Helpers\Mesh.h">
+    <ClInclude Include="src\Renderer\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\vendor\glsl\glsl.h">

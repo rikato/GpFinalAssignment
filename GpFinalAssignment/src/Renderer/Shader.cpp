@@ -9,14 +9,14 @@
 #include "../vendor/glsl/glsl.h"
 
 Shader::Shader(const::std::string& filePath)
-	:filePath(filePath), rendererId(0)
+	:m_FilePath(filePath), m_RendererId(0)
 {
-	this->rendererId = CreateShader();
+	m_RendererId = CreateShader();
 }
 
 Shader::~Shader()
 {
-	GLCall(glDeleteProgram(rendererId));
+	GLCall(glDeleteProgram(m_RendererId));
 }
 
 unsigned int Shader::CreateShader()
@@ -51,26 +51,26 @@ void Shader::SetUniformMat4f(const std::string& name, glm::mat4 matrix)
 
 unsigned int Shader::GetUniformLocation(const std::string& name)
 {
-	if (uniformLocationCache.find(name) != uniformLocationCache.end()) 
+	if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end()) 
 	{
-		return uniformLocationCache[name];
+		return m_UniformLocationCache[name];
 	}
 
-	GLCall(int location = glGetUniformLocation(rendererId, name.c_str()));
+	GLCall(int location = glGetUniformLocation(m_RendererId, name.c_str()));
 
 	if (location == -1)
 	{
 		std::cout << "Warning: uniform location does not exist." << std::endl;
 	}
 
-	uniformLocationCache[name] = location;
+	m_UniformLocationCache[name] = location;
 
 	return location;
 }
 
 void Shader::Bind() const
 {
-	GLCall(glUseProgram(rendererId));
+	GLCall(glUseProgram(m_RendererId));
 }
 
 void Shader::UnBind() const

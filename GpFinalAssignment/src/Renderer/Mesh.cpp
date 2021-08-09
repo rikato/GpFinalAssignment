@@ -6,20 +6,20 @@
 #include "../Renderer/Shader.h"
 
 Mesh::Mesh(std::string path)
-    :vao(0)
+    :m_Vao(0)
 {
     // Load the object file.
-    if (loadOBJ(&path[0], this->vertices, this->normals, this->uvs)) 
+    if (loadOBJ(&path[0], m_Vertices, m_Normals, m_Uvs)) 
     {
         // After succesfully loading the object, create it.
-        this->Create();
+        Create();
     }
 }
 
 void Mesh::Draw()
 {
-    glBindVertexArray(this->vao);
-    glDrawArrays(GL_TRIANGLES, 0, this->vertices.size());
+    glBindVertexArray(m_Vao);
+    glDrawArrays(GL_TRIANGLES, 0, m_Vertices.size());
     glBindVertexArray(0);
 }
 
@@ -28,13 +28,13 @@ void Mesh::Create()
     unsigned int vbo;
 
     // Bind vao.
-    glGenVertexArrays(1, &this->vao);
-    glBindVertexArray(this->vao);
+    glGenVertexArrays(1, &m_Vao);
+    glBindVertexArray(m_Vao);
 
     // vbo vertices.
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, this->vertices.size() * sizeof(glm::vec3), &this->vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_Vertices.size() * sizeof(glm::vec3), &m_Vertices[0], GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // Now bind the vbo to the vao.

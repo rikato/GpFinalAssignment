@@ -4,22 +4,22 @@
 
 #include "../Renderer/Renderer.h"
 #include "../vendor/objLoader/objLoader.h"
-#include "../Helpers/Mesh.h"
+#include "../Renderer/Mesh.h"
 
 Application::Application()
 {
     if (!glfwInit())
         return;
 
-    glfwWindow = glfwCreateWindow(800, 600, "Graphics programming final assignment", NULL, NULL);
+    m_GlfwWindow = glfwCreateWindow(800, 600, "Graphics programming final assignment", NULL, NULL);
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    glfwMakeContextCurrent(glfwWindow);
+    glfwMakeContextCurrent(m_GlfwWindow);
 
-    if (glfwWindow == NULL)
+    if (m_GlfwWindow == NULL)
     {
         std::cout << "Failed to create glfw window" << std::endl;
 
@@ -41,28 +41,28 @@ Application::Application()
 
 Application::~Application()
 {
-    delete glfwWindow;
+    delete m_GlfwWindow;
 }
 
 void Application::Start()
 {
     Renderer renderer;
-    Scene scene(glfwWindow);
+    Scene scene(m_GlfwWindow);
 
     // Keep the glfw window open until it is instructed to be closed.
-    while (!glfwWindowShouldClose(glfwWindow))
+    while (!glfwWindowShouldClose(m_GlfwWindow))
     {
         renderer.Clear();
 
-        scene.camera->Update();
+        scene.m_Camera->Update();
 
-        for (auto object : scene.objects)
+        for (auto object : scene.m_Objects)
         {
-            object->Update(scene.camera->GetViewMatrix(), scene.camera->GetProjectionMatrix());
+            object->Update(scene.m_Camera->GetViewMatrix(), scene.m_Camera->GetProjectionMatrix());
         }
 
         // Swap front and back buffers.
-        glfwSwapBuffers(glfwWindow);
+        glfwSwapBuffers(m_GlfwWindow);
 
         // Poll for and process events.
         glfwPollEvents();

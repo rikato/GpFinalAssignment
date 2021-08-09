@@ -13,6 +13,6 @@ public:
 	Scene(GLFWwindow* window);
 	~Scene();
 
-	std::vector<Object*> objects;
-	Camera* camera;
+	std::vector<Object*> m_Objects;
+	Camera* m_Camera;
 };

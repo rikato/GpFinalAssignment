@@ -9,13 +9,13 @@ struct MVP {
 
 class Camera {
 private:
-	glm::vec3 position;
-	glm::vec3 direction;
-	glm::vec3 front;
-	glm::vec3 up;
-	MVP mvp;
+	glm::vec3 m_Position;
+	glm::vec3 m_Direction;
+	glm::vec3 m_Front;
+	glm::vec3 m_Up;
+	MVP m_Mvp;
 
-	GLFWwindow* window;
+	GLFWwindow* m_Window;
 public:
 	Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 front, glm::vec3 up, GLFWwindow* window);
 	~Camera();
