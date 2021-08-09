@@ -5,7 +5,7 @@
 class Camera {
 private:
 	// Position of the camera.
-	glm::vec3 m_Position = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 m_Position;
 	// Front direction relative to camera.
 	glm::vec3 m_Front = glm::vec3(0.0f, 0.0f, 1.0f);
 	// Up direction relative to camera.
@@ -17,6 +17,7 @@ private:
 	GLFWwindow* m_Window;
 
 	float m_Sensitivity = 0.1f;
+	float m_KeyboardLookSensitivity = 2.0f;
 	float m_MovementSpeed = 3.0f;
 	float m_Pitch = 90.0f;
 	float m_Yaw = 0.0f;
@@ -27,6 +28,8 @@ private:
 
 	void Translate(double deltaTime);
 	void Rotate(double xpos, double ypos);
+	void RotateUsingKeyboard();
+	double* GetMousePositions();
 public:
 	Camera(glm::vec3 position, GLFWwindow* window);
 	~Camera();

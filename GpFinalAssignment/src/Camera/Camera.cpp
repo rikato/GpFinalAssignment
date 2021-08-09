@@ -29,31 +29,46 @@ void Camera::Update(double deltaTime)
 		m_DroneMode = !m_DroneMode;
 	}
 
-	Translate(deltaTime);
-
 	/* Check wether drone mode is set,
-	if it is not set then the y position 
+	if it is not set then the y position
 	is fixed, simulating a human pov.
-	When it is activated we keep the camera 
+	When it is activated we keep the camera
 	above the floor. */
-	if (m_DroneMode) 
+	if (m_DroneMode)
 	{
-		if (m_Position.y < 0) 
+		if (m_Position.y < 0)
 		{
 			m_Position.y = 0;
 		}
 	}
-	else 
+	else
 	{
 		// Starting point is on the street (~1,75m from the ground).
 		// I have put the camera a little lower since my ground is not even.
 		m_Position.y = 1.10f;
 	}
 
+	Translate(deltaTime);
+
+	// Get the position of the cursor, we use this to rotate the camera.
+	double *cursorPosition = GetMousePositions();
+
+	// Rotate camere based on x, y position of the mouse.
+	Rotate(cursorPosition[0], cursorPosition[1]);
+
+	// Update last x and last y positions based on keyboard input.
+	RotateUsingKeyboard();
+}
+
+double* Camera::GetMousePositions()
+{
 	double mousePosX, mousePosY;
 
 	glfwGetCursorPos(m_Window, &mousePosX, &mousePosY);
-	Rotate(mousePosX, mousePosY);
+
+	double result[2] = { mousePosX, mousePosY };
+
+	return &result[0];
 }
 
 void Camera::Translate(double deltaTime)
@@ -82,6 +97,33 @@ void Camera::Translate(double deltaTime)
 	if (glfwGetKey(m_Window, GLFW_KEY_S) == GLFW_PRESS)
 	{
 		m_Position -= m_Front * v;
+	}
+}
+
+void Camera::RotateUsingKeyboard()
+{
+	// Look up (I).
+	if (glfwGetKey(m_Window, GLFW_KEY_I) == GLFW_PRESS)
+	{
+		m_LastY += m_KeyboardLookSensitivity;
+	}
+
+	// Look left (J).
+	if (glfwGetKey(m_Window, GLFW_KEY_J) == GLFW_PRESS)
+	{
+		m_LastX += m_KeyboardLookSensitivity;
+	}
+
+	// Look right (L).
+	if (glfwGetKey(m_Window, GLFW_KEY_L) == GLFW_PRESS)
+	{
+		m_LastX -= m_KeyboardLookSensitivity;
+	}
+
+	// Look down (K).
+	if (glfwGetKey(m_Window, GLFW_KEY_K) == GLFW_PRESS)
+	{
+		m_LastY -= m_KeyboardLookSensitivity;
 	}
 }
 

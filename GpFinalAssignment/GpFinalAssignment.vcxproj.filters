@@ -977,6 +977,9 @@
     <ClInclude Include="src\World\Flag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\World\Spotlight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">

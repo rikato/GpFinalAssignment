@@ -473,6 +473,7 @@
     <ClInclude Include="src\vendor\objloader\objloader.h" />
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
     <ClInclude Include="src\World\MoonSurface.h" />
+    <ClInclude Include="src\World\Spotlight.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\basic.frag" />
