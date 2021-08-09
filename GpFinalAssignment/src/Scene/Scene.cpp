@@ -8,7 +8,7 @@ Scene::Scene(GLFWwindow *window)
 	m_Camera = new Camera(glm::vec3(0, 0, -2), window);
 
 	Teapot* teapot1 = new Teapot(glm::vec3(0, 0, 0));
-	Lander* lander = new Lander(glm::vec3(0, 0, 10));
+	Lander* lander = new Lander(glm::vec3(0, 1.8962, 14));
 
 	m_Objects.push_back(teapot1);
 	m_Objects.push_back(lander);

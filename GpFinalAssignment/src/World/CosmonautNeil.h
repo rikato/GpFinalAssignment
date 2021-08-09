@@ -1,12 +1,12 @@
 #include "Object.h"
 #include "../Renderer/Material.h"
 
-class Lander : public Object
+class CosmonautNeil : public Object
 {
 public:
-	Lander(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
-		new Mesh("assets/models/spaceship/lander.obj"), 
-		new Shader(""), 
+	CosmonautNeil(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
+		new Mesh("assets/models/spaceship/lander.obj"),
+		new Shader(""),
 		new Material("assets/textures/Material__7_albedo.bmp"))
 	{
 		// Set the position of the object.
