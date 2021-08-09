@@ -3,8 +3,8 @@
 class Teapot : public Object 
 {
 public:
-	Teapot(): Object(new Mesh("assets/models/teapot/teapot.obj"), new Shader(""))
+	Teapot(glm::vec3 translation = glm::vec3(0,0,0)): Object(new Mesh("assets/models/teapot/teapot.obj"), new Shader(""))
 	{
-		this->transform = glm::translate(glm::mat4(1.0), glm::vec3(-1, 0, 0));
+		this->transform = glm::translate(glm::mat4(1.0), translation);
 	}
 };
