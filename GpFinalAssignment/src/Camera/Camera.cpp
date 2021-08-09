@@ -130,7 +130,7 @@ void Camera::Update(double deltaTime)
 		// Toggle drone mode.
 		m_DroneMode = !m_DroneMode;
 		
-		// If drone mode is enabled store the latest location
+		// If drone mode is enabled store the latest location and set a nice overview of the scene.
 		if (m_DroneMode)
 		{
 			m_LastPosition = m_Position;
