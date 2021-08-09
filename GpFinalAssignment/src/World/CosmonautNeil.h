@@ -5,9 +5,9 @@ class CosmonautNeil : public Object
 {
 public:
 	CosmonautNeil(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
-		new Mesh("assets/models/spaceship/lander.obj"),
+		new Mesh("assets/models/cosmonauts/Neil.obj"),
 		new Shader(""),
-		new Material("assets/textures/Material__7_albedo.bmp"))
+		new Material("assets/models/cosmonauts/Neil.bmp"))
 	{
 		// Set the position of the object.
 		m_Transform = glm::translate(glm::mat4(1.0), translation);
