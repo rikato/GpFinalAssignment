@@ -5,7 +5,7 @@ class Flag : public Object
 {
 public:
 	Flag(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
-		new Mesh("assets/models/flag/flag.obj"),
+		new Mesh("assets/models/flag/flag.3dobj"),
 		new Shader(""),
 		new Material("assets/models/flag/soviet_flag.bmp"))
 	{

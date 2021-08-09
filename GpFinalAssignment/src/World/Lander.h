@@ -5,7 +5,7 @@ class Lander : public Object
 {
 public:
 	Lander(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
-		new Mesh("assets/models/spaceship/lander.obj"), 
+		new Mesh("assets/models/spaceship/lander.3dobj"), 
 		new Shader(""), 
 		new Material("assets/textures/Material__7_albedo.bmp"))
 	{

@@ -69,7 +69,7 @@
     <ClCompile Include="src\Renderer\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\World\CosmonautNeil.h">
+    <ClCompile Include="src\World\Cosmonaut.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -965,7 +965,7 @@
     <ClInclude Include="src\vendor\glsl\glsl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\World\Teapot.h">
+    <ClInclude Include="src\World\MoonSurface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\Material.h">
