@@ -5,9 +5,9 @@ class Lander : public Object
 {
 public:
 	Lander(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
-		new Mesh("assets/models/spaceship/lander.3dobj"), 
+		new Mesh("assets/models/lander/lander.3dobj"), 
 		new Shader(""), 
-		new Material("assets/textures/Material__7_albedo.bmp"))
+		new Material("assets/models/lander/lander.bmp"))
 	{
 		// Set the position of the object.
 		m_Transform = glm::translate(glm::mat4(1.0), translation);
