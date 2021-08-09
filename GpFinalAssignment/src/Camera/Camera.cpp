@@ -20,8 +20,6 @@ Camera::Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 front, glm::ve
 
 	this->mvp.projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 10000.0f);
 	this->mvp.view = glm::translate(glm::mat4(1.0), glm::vec3(this->position));
-	this->mvp.model = glm::translate(glm::mat4(1.0), glm::vec3(0.0f, 0.0f, 0.0f));
-	//this->mvp.model = glm::scale(glm::mat4(1.0), glm::vec3(10.0f, 10.0f, 10.0f));
 }
 
 Camera::~Camera()
@@ -34,33 +32,38 @@ void Camera::Update()
 	// Forward.
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) 
 	{
-		this->position.z += 1;
+		this->position.z += 0.1f;
 	}
 
 	// Left.
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
-		this->position.x += 1;
+		this->position.x += 0.1f;
 	}
 
 	// Right.
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
-		this->position.x -= 1;
+		this->position.x -= 0.1f;
 	}
 
 	// Backwards.
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		this->position.z -= 1;
+		this->position.z -= 0.1f;
 	}
 
 
 	this->mvp.view = glm::translate(glm::mat4(1.0), glm::vec3(this->position));
 }
 
-glm::mat4 Camera::GetMVP() const
+glm::mat4 Camera::GetViewMatrix() const
 {
-	return mvp.projection * mvp.view * mvp.model;
+	return this->mvp.view;
+}
+
+glm::mat4 Camera::GetProjectionMatrix() const
+{
+	return this->mvp.projection;
 }
 

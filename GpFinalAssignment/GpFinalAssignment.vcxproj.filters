@@ -63,6 +63,9 @@
     <ClCompile Include="src\Helpers\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\vendor\glsl\glsl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h">
@@ -953,9 +956,11 @@
     <ClInclude Include="src\Helpers\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\vendor\glsl\glsl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\Basic.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl">
       <Filter>Header Files</Filter>
     </None>
@@ -1366,6 +1371,8 @@
     </None>
     <None Include="assets\shaders\fragmentshader.frag" />
     <None Include="assets\shaders\vertexshader.vert" />
+    <None Include="assets\shaders\basic.vert" />
+    <None Include="assets\shaders\basic.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\wall.png">

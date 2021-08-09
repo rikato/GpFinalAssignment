@@ -14,5 +14,4 @@ public:
 
 private: 
 	GLFWwindow* glfwWindow;
-	Scene* scene;
 };

@@ -5,7 +5,6 @@
 struct MVP {
 	glm::mat4 projection;
 	glm::mat4 view;
-	glm::mat4 model;
 };
 
 class Camera {
@@ -22,5 +21,6 @@ public:
 	~Camera();
 
 	void Update();
-	glm::mat4 GetMVP() const;
+	glm::mat4 GetViewMatrix() const;
+	glm::mat4 GetProjectionMatrix() const;
 };

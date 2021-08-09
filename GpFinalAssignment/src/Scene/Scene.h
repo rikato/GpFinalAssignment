@@ -1,25 +1,18 @@
 #pragma once
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <vector>
 
-#include "../Helpers/IndexBuffer.h"
-#include "../Helpers/VertexBuffer.h"
-#include "../Helpers/VertexArray.h"
-#include "../Helpers/VertexBufferLayout.h"
 #include "../Renderer/Shader.h"
 #include "../Camera/Camera.h"
+#include "../World/Object.h"
 
 class Scene
 {
 public:
 	Scene(GLFWwindow* window);
 	~Scene();
-	VertexArray* va;
-	IndexBuffer* ib;
-	Shader* shader;
-	Camera* camera;
 
-private:
-	VertexBufferLayout* vbl;
-	VertexBuffer* vb;
+	std::vector<Object*> objects;
+	Camera* camera;
 };

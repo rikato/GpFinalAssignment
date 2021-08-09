@@ -37,38 +37,29 @@ Application::Application()
     }
 
     glViewport(0, 0, 800, 600);
-
-    //scene = new Scene(glfwWindow);
 }
 
 Application::~Application()
 {
+    delete glfwWindow;
 }
 
 void Application::Start()
 {
     Renderer renderer;
-
-    // Setup the shader for this mesh.
-    Shader shader("assets/shaders/Basic.shader");
-    shader.Bind();
-
-    Mesh teapot("assets/models/teapot/teapot.obj");
-
-    Camera camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glfwWindow);
+    Scene scene(glfwWindow);
 
     // Keep the glfw window open until it is instructed to be closed.
     while (!glfwWindowShouldClose(glfwWindow))
     {
         renderer.Clear();
 
-        //Set the shader uniforms.
-        shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
+        scene.camera->Update();
 
-        //Set the shader uniforms.
-        shader.SetUniformMat4f("MVP", camera.GetMVP());
-
-        teapot.Draw();
+        for (auto object : scene.objects)
+        {
+            object->Update(scene.camera->GetViewMatrix(), scene.camera->GetProjectionMatrix());
+        }
 
         // Swap front and back buffers.
         glfwSwapBuffers(glfwWindow);

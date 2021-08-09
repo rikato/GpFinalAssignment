@@ -1,28 +1,21 @@
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-
 #include "Scene.h"
-#include "../Renderer/Texture.h"
-#include "../Renderer/Renderer.h"
+#include "../Helpers/Mesh.h"
 
 Scene::Scene(GLFWwindow *window) 
 {
-	shader = new Shader("assets/shaders/Basic.shader");
-	
-	shader->Bind();
-	shader->SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
+	// Setup the camera.
+	this->camera = new Camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), window);
 
-	camera = new Camera(glm::vec3(0,0,0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), window);
+	// Create the teapot.
+	Shader* teapotShader = new Shader("");
+	Mesh* teapotMesh = new Mesh("assets/models/teapot/teapot.obj");
+	Object* teapot = new Object(teapotMesh, teapotShader);
 
-	va->UnBind();
-	vb->Unbind();
-	ib->Unbind();
-	shader->UnBind();
+	this->objects.push_back(teapot);
 }
 
 Scene::~Scene()
 {
-	vb->~VertexBuffer();
-	ib->~IndexBuffer();
-	shader->~Shader();
+	delete camera;
+	delete[] &this->objects;
 }
