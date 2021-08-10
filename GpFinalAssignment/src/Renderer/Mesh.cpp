@@ -1,7 +1,5 @@
 #include "Mesh.h"
 
-#include <glad/glad.h>
-
 #include "../vendor/objloader/objloader.h" 
 #include "../Renderer/Shader.h"
 
@@ -12,11 +10,12 @@ Mesh::Mesh(const std::string& path)
     loadOBJ(&path[0], m_Vertices, m_Uvs, m_Normals);
 }
 
-Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec3> normals, std::vector<glm::vec2> uvs)
+Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec3> normals, std::vector<glm::vec2> uvs, char drawingMode)
 {
     m_Vertices = vertices;
     m_Normals = normals;
     m_Uvs = uvs;
+    m_DrawingMode = drawingMode;
 }
 
 void Mesh::SetShader(Shader* shader)
@@ -29,7 +28,7 @@ void Mesh::SetShader(Shader* shader)
 void Mesh::Draw()
 {
     glBindVertexArray(m_Vao);
-    glDrawArrays(GL_TRIANGLES, 0, m_Vertices.size());
+    glDrawArrays(m_DrawingMode, 0, m_Vertices.size());
     glBindVertexArray(0);
 }
 

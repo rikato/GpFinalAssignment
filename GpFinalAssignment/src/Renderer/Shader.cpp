@@ -104,9 +104,9 @@ void Shader::UpdateMv(glm::mat4 matrix)
 {
 	SetUniformMat4f("mv", matrix);
 
-	SetUniform3fv("materialAmbientColor", glm::vec3(0.3, 0.3, 0.3));
-	SetUniform3fv("materialDiffuseColor", glm::vec3(1, 1, 1));
-	SetUniform3fv("materialSpecularColor", glm::vec3(0, 0, 0));
+	SetUniform3fv("materialAmbientColor", glm::vec3(0.0, 0.0, 0.1));
+	SetUniform3fv("materialDiffuseColor", glm::vec3(1.3, 1.3, 1.3));
+	SetUniform3fv("materialSpecularColor", glm::vec3(1, 1, 1));
 	SetUniform1f("materialRoughness", 1024);
 }
 
