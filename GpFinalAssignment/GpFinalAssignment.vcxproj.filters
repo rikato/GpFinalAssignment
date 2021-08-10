@@ -986,7 +986,7 @@
     <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\World\Primitives\Earth.h">
+    <ClInclude Include="src\World\Earth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 #include "../World/Cosmonaut.h"
 #include "../World/Spotlight.h"
 #include "../World/Primitives/Floor.h"
-#include "../World/Primitives/Earth.h"
+#include "../World/Earth.h"
 #include "../World/CustomDesigned/Flag.h"
 #include "../World/CustomDesigned/UniverseBoard.h"
 
