@@ -24,6 +24,7 @@ void Camera::Update(double deltaTime)
 	// Toggle drone mode when user presses 'v'.
 	if (glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
 	{
+		// TODO: move camera to position that has a nice overview of the scene.
 		m_DroneMode = !m_DroneMode;
 	}
 
@@ -36,15 +37,15 @@ void Camera::Update(double deltaTime)
 	above the floor. */
 	if (m_DroneMode) 
 	{
-		if (m_Position.y < -1.75f) 
+		if (m_Position.y < 0) 
 		{
-			m_Position.y = -1.75f;
+			m_Position.y = 0;
 		}
 	}
 	else 
 	{
 		// Starting point is on the street (~1,75m from the ground).
-		m_Position.y = -1.75f;
+		m_Position.y = 1.75f;
 	}
 
 	double mousePosX, mousePosY;
