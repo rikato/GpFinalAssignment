@@ -19,30 +19,32 @@ Camera::~Camera()
 
 }
 
-void Camera::Update()
+void Camera::Update(double deltaTime)
 {
+	const float v = m_MovementSpeed * deltaTime;
+
 	// Forward (W).
 	if (glfwGetKey(m_Window, GLFW_KEY_W) == GLFW_PRESS) 
 	{
-		m_Position.z += 0.1f;
+		m_Position += m_Front * v;
 	}
 
 	// Left (A).
 	if (glfwGetKey(m_Window, GLFW_KEY_A) == GLFW_PRESS)
 	{
-		m_Position.x += 0.1f;
-	}
-
-	// Backwards (S).
-	if (glfwGetKey(m_Window, GLFW_KEY_S) == GLFW_PRESS)
-	{
-		m_Position.z -= 0.1f;
+		m_Position -= m_Side * v;
 	}
 
 	// Right (D).
 	if (glfwGetKey(m_Window, GLFW_KEY_D) == GLFW_PRESS)
 	{
-		m_Position.x -= 0.1f;
+		m_Position += m_Side * v;
+	}
+
+	// Backwards (S).
+	if (glfwGetKey(m_Window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		m_Position -= m_Front * v;
 	}
 
 	// Starting point is on the street (~1,75m from the ground).
@@ -58,23 +60,19 @@ void Camera::Update()
 
 void Camera::MoveCamera(double xPos, double yPos)
 {
+	float xOffset = m_FirstMouse ? 0 : xPos - m_LastX;
+	float yOffset = m_FirstMouse ? 0 : m_LastY - yPos;
+
 	if (m_FirstMouse)
 	{
-		m_LastX = xPos;
-		m_LastY = yPos;
 		m_FirstMouse = false;
 	}
-
-	float xOffset = xPos - m_LastX;
-	float yOffset = m_LastY - yPos;
 
 	m_LastX = xPos;
 	m_LastY = yPos;
 
-	float sensitivity = 0.1f;
-
-	xOffset *= sensitivity;
-	yOffset *= sensitivity;
+	xOffset *= m_Sensitivity;
+	yOffset *= m_Sensitivity;
 
 	m_Yaw += xOffset;
 	m_Pitch += yOffset;
@@ -88,13 +86,13 @@ void Camera::MoveCamera(double xPos, double yPos)
 		m_Pitch = -89.0f;
 	}
 
-	glm::vec3 front;
+	m_Front = glm::normalize(glm::vec3(
+		cos(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch)),
+		sin(glm::radians(m_Pitch)),
+		sin(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch))
+	));
 
-	front.x = cos(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch));
-	front.y = sin(glm::radians(m_Pitch));
-	front.z = sin(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch));
-	
-	m_Front = glm::normalize(front);
+	m_Side = glm::normalize(glm::cross(m_Front, m_Up));
 }
 
 glm::mat4 Camera::GetProjectionMatrix() const

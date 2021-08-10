@@ -52,13 +52,23 @@ void Application::Start()
     Renderer renderer;
     Scene scene(m_GlfwWindow);
 
+    double previousFrameTime = 0.0f;
+
     // Keep the glfw window open until it is instructed to be closed.
     while (!glfwWindowShouldClose(m_GlfwWindow))
     {
         renderer.Clear();
 
-        scene.m_Camera->Update();
+        // Get the current time of this frame and store it.
+        double currentFrameTime = glfwGetTime();
 
+        // Update the camera and calculate the delta time between frames.
+        scene.m_Camera->Update(currentFrameTime - previousFrameTime);
+
+        // Set the current time as previous time so we can calculate the delta next frame.
+        previousFrameTime = currentFrameTime;
+
+        // Update all objects in scene based on camera matrices.
         for (auto object : scene.m_Objects)
         {
             object->Update(scene.m_Camera->GetViewMatrix(), scene.m_Camera->GetProjectionMatrix());

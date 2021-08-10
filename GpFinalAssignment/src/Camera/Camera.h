@@ -10,10 +10,14 @@ private:
 	glm::vec3 m_Front = glm::vec3(0.0f, 0.0f, 1.0f);
 	// Up direction relative to camera.
 	glm::vec3 m_Up = glm::vec3(0.0f, 1.0f, 0.0f);
+	// Side direction relative to camera.
+	glm::vec3 m_Side = glm::vec3(1.0f, 0.0f, 0.0f);
 	glm::mat4 m_Projection;
 
 	GLFWwindow* m_Window;
 
+	float m_Sensitivity = 0.1f;
+	float m_MovementSpeed = 1.0f;
 	float m_Pitch = 90.0f;
 	float m_Yaw = 0.0f;
 	float m_LastX = 800.0f / 2.0;
@@ -25,7 +29,7 @@ public:
 	Camera(glm::vec3 position, GLFWwindow* window);
 	~Camera();
 
-	void Update();
+	void Update(double deltaTime);
 
 	glm::mat4 GetViewMatrix() const;
 	glm::mat4 GetProjectionMatrix() const;
