@@ -974,10 +974,16 @@
     <ClInclude Include="src\World\Lander.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\World\Flag.h">
+    <ClInclude Include="src\World\CustomDesigned\Flag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\World\Spotlight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Primitives\Floor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

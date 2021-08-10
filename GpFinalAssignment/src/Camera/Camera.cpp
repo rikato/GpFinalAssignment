@@ -158,8 +158,7 @@ void Camera::Update(double deltaTime)
 	else
 	{
 		// Starting point is on the street (~1,75m from the ground).
-		// Since the ground is not even the user perspective is a little lower.
-		m_Position.y = 1.10f;
+		m_Position.y = 1.75f;
 	}
 
 	// Translate the camera position based on keyboard intput (WASD).

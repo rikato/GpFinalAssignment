@@ -9,8 +9,7 @@ public:
 		new Shader(""), 
 		new Material("assets/models/lander/lander.bmp"))
 	{
-		// Set the position of the object.
-		m_Transform = glm::translate(glm::mat4(1.0), translation);
 		m_Transform = glm::rotate(m_Transform, glm::radians(-147.0f), glm::vec3(0, 1, 0));
+		m_Transform = glm::translate(glm::mat4(1.0), translation);
 	}
 };
