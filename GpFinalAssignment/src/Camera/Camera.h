@@ -23,8 +23,10 @@ private:
 	float m_LastX = 800.0f / 2.0;
 	float m_LastY = 600.0 / 2.0;
 	bool m_FirstMouse = true;
+	bool m_DroneMode = false;
 
-	void MoveCamera(double xpos, double ypos);
+	void Translate(double deltaTime);
+	void Rotate(double xpos, double ypos);
 public:
 	Camera(glm::vec3 position, GLFWwindow* window);
 	~Camera();

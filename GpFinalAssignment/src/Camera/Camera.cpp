@@ -21,10 +21,44 @@ Camera::~Camera()
 
 void Camera::Update(double deltaTime)
 {
+	// Toggle drone mode when user presses 'v'.
+	if (glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
+	{
+		m_DroneMode = !m_DroneMode;
+	}
+
+	Translate(deltaTime);
+
+	/* Check wether drone mode is set,
+	if it is not set then the y position 
+	is fixed, simulating a human pov.
+	When it is activated we keep the camera 
+	above the floor. */
+	if (m_DroneMode) 
+	{
+		if (m_Position.y < -1.75f) 
+		{
+			m_Position.y = -1.75f;
+		}
+	}
+	else 
+	{
+		// Starting point is on the street (~1,75m from the ground).
+		m_Position.y = -1.75f;
+	}
+
+	double mousePosX, mousePosY;
+
+	glfwGetCursorPos(m_Window, &mousePosX, &mousePosY);
+	Rotate(mousePosX, mousePosY);
+}
+
+void Camera::Translate(double deltaTime)
+{
 	const float v = m_MovementSpeed * deltaTime;
 
 	// Forward (W).
-	if (glfwGetKey(m_Window, GLFW_KEY_W) == GLFW_PRESS) 
+	if (glfwGetKey(m_Window, GLFW_KEY_W) == GLFW_PRESS)
 	{
 		m_Position += m_Front * v;
 	}
@@ -46,19 +80,9 @@ void Camera::Update(double deltaTime)
 	{
 		m_Position -= m_Front * v;
 	}
-
-	// Starting point is on the street (~1,75m from the ground).
-	m_Position.y = 0;
-
-	double mousePosX, mousePosY;
-
-	glfwGetCursorPos(m_Window, &mousePosX, &mousePosY);
-
-	// Update the camera direction based on mouse position.
-	MoveCamera(mousePosX, mousePosY);
 }
 
-void Camera::MoveCamera(double xPos, double yPos)
+void Camera::Rotate(double xPos, double yPos)
 {
 	float xOffset = m_FirstMouse ? 0 : xPos - m_LastX;
 	float yOffset = m_FirstMouse ? 0 : m_LastY - yPos;
