@@ -4,7 +4,7 @@
 Scene::Scene(GLFWwindow *window) 
 {
 	// Setup the camera.
-	m_Camera = new Camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), window);
+	m_Camera = new Camera(glm::vec3(0, 0, -1.7), window);
 
 	Teapot* teapot1 = new Teapot(glm::vec3(-1, 0, 0));
 	Teapot* teapot2 = new Teapot(glm::vec3(1, 0, 0));

@@ -37,6 +37,9 @@ Application::Application()
     }
 
     glViewport(0, 0, 800, 600);
+
+    // Hide cursor.
+    glfwSetInputMode(m_GlfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 Application::~Application()

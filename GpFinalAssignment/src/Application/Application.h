@@ -11,7 +11,6 @@ public:
 	~Application();
 
 	void Start();
-
-private: 
+private:
 	GLFWwindow* m_GlfwWindow;
 };
