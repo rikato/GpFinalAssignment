@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "Renderer.h"
 #include "../vendor/glsl/glsl.h"
@@ -23,8 +24,8 @@ unsigned int Shader::CreateShader()
 {
 	unsigned int program = glCreateProgram();
 
-	char* vs = glsl::readFile("assets/shaders/basic.vert");
-	char* fs = glsl::readFile("assets/shaders/basic.frag");
+	char* vs = glsl::readFile("assets/shaders/vertexshader.shader");
+	char* fs = glsl::readFile("assets/shaders/fragmentshader.shader");
 
 	unsigned int vsId = glsl::makeVertexShader(vs);
 	unsigned int fsId = glsl::makeFragmentShader(fs);
@@ -44,9 +45,30 @@ unsigned int Shader::CreateShader()
 
 void Shader::SetUniformMat4f(const std::string& name, glm::mat4 matrix)
 {
-	unsigned int location = this->GetUniformLocation(name);
+	unsigned int location = GetUniformLocation(name);
 
 	GLCall(glUniformMatrix4fv(location, 1, GL_FALSE, &matrix[0][0]));
+}
+
+void Shader::SetUniform3fv(const std::string& name, glm::vec3 value)
+{
+	unsigned int location = GetUniformLocation(name);
+
+	glUniform3fv(location, 1, glm::value_ptr(value));
+}
+
+void Shader::SetUniform1i(const std::string& name, int value)
+{
+	unsigned int location = GetUniformLocation(name);
+
+	glUniform1i(location, value);
+}
+
+void Shader::SetUniform1f(const std::string& name, float value)
+{
+	unsigned int location = GetUniformLocation(name);
+
+	glUniform1f(location, value);
 }
 
 unsigned int Shader::GetUniformLocation(const std::string& name)
@@ -78,12 +100,22 @@ void Shader::UnBind() const
 	GLCall(glUseProgram(0));
 }
 
-void Shader::updateMv(glm::mat4 matrix)
+void Shader::UpdateMv(glm::mat4 matrix)
 {
-	this->SetUniformMat4f("mv", matrix);
+	SetUniformMat4f("mv", matrix);
 }
 
-void Shader::updateProjection(glm::mat4 matrix)
+void Shader::UpdateProjection(glm::mat4 matrix)
 {
-	this->SetUniformMat4f("projection", matrix);
+	SetUniformMat4f("projection", matrix);
+}
+
+void Shader::SetDiffuseMap(int value)
+{
+	SetUniform3fv("materialAmbientColor", glm::vec3(1, .5, .5));
+	SetUniform3fv("materialDiffuseColor", glm::vec3(1, .5, .5));
+	SetUniform3fv("materialSpecularColor", glm::vec3(.5, .5, .5));
+	SetUniform1f("materialRoughness", 123);
+
+	SetUniform1i("diffuseMap", value);
 }

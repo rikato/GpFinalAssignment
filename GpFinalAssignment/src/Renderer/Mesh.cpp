@@ -5,7 +5,7 @@
 #include "../vendor/objloader/objloader.h" 
 #include "../Renderer/Shader.h"
 
-Mesh::Mesh(std::string path)
+Mesh::Mesh(const std::string& path)
     :m_Vao(0)
 {
     // Load the object file.

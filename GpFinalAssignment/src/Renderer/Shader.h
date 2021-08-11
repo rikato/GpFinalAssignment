@@ -28,10 +28,14 @@ public:
 	void Bind() const;
 	void UnBind() const;
 
-	void updateMv(glm::mat4 matrix);
-	void updateProjection(glm::mat4 matrix);
+	void UpdateMv(glm::mat4 matrix);
+	void UpdateProjection(glm::mat4 matrix);
+	void SetDiffuseMap(int value);
 private:
 	unsigned int GetUniformLocation(const std::string& name);
 	unsigned int CreateShader();
 	void SetUniformMat4f(const std::string& name, glm::mat4 matrix);
+	void SetUniform3fv(const std::string& name, glm::vec3 value);
+	void SetUniform1i(const std::string& name, int value);
+	void SetUniform1f(const std::string& name, float value);
 };

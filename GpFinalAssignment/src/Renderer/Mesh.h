@@ -14,7 +14,7 @@ private:
 
 	void Create();
 public:
-	Mesh(std::string path);
+	Mesh(const std::string& path);
 
 	void Draw();
 };

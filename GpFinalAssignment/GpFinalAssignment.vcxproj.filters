@@ -30,7 +30,7 @@
     <ClCompile Include="src\vendor\stb_image\stb_iamge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\Texture.cpp">
+    <ClCompile Include="src\vendor\texture\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer\Renderer.cpp">
@@ -66,6 +66,9 @@
     <ClCompile Include="src\vendor\glsl\glsl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderer\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h">
@@ -77,7 +80,7 @@
     <ClInclude Include="src\vendor\stb_image\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\Texture.h">
+    <ClInclude Include="src\vendor\texture\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Helpers\VertexBuffer.h">
@@ -962,6 +965,9 @@
     <ClInclude Include="src\World\Teapot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1372,13 +1378,16 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="assets\shaders\fragmentshader.frag" />
-    <None Include="assets\shaders\vertexshader.vert" />
+    <None Include="assets\shaders\fragmentshader.shader" />
+    <None Include="assets\shaders\vertexshader.shader" />
     <None Include="assets\shaders\basic.vert" />
     <None Include="assets\shaders\basic.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\wall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\Yellobrk.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

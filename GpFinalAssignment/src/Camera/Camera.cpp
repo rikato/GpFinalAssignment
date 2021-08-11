@@ -51,7 +51,7 @@ void Camera::Update(double deltaTime)
 	double mousePosX, mousePosY;
 
 	glfwGetCursorPos(m_Window, &mousePosX, &mousePosY);
-	Rotate(mousePosX, mousePosY);
+	//Rotate(mousePosX, mousePosY);
 }
 
 void Camera::Translate(double deltaTime)

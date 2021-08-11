@@ -49,6 +49,10 @@ Application::~Application()
 
 void Application::Start()
 {
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glDisable(GL_CULL_FACE);
+
     Renderer renderer;
     Scene scene(m_GlfwWindow);
 
