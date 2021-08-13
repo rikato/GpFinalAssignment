@@ -15,6 +15,6 @@ public:
 		m_Material->AddTexture(diffuse);
 		m_Material->AddTexture(normal);
 
-		m_Transform = glm::translate(m_Transform, translation);
+		m_LocalTransform = glm::translate(m_LocalTransform, translation);
 	}
 };

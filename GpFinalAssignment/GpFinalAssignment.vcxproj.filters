@@ -75,6 +75,9 @@
     <ClCompile Include="src\Helpers\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\World\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h">
@@ -989,10 +992,13 @@
     <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\World\Earth.h">
+    <ClInclude Include="src\World\Primitives\Earth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Helpers\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

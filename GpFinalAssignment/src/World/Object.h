@@ -14,5 +14,5 @@ public:
 	Mesh* m_Mesh;
 	Shader* m_Shader;
 	Material* m_Material;
-	glm::mat4 m_Transform;
+	glm::mat4 m_LocalTransform;
 };

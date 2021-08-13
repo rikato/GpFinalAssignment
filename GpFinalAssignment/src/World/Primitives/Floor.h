@@ -45,7 +45,7 @@ public:
 		m_Material->AddTexture(normal);
 
 		// Scale the floor on x and y axis to match the width of the scene.
-		m_Transform = glm::scale(m_Transform, glm::vec3(30, 0.01f, 30));
-		m_Transform = glm::translate(m_Transform, translation);
+		m_LocalTransform = glm::scale(m_LocalTransform, glm::vec3(30, 0.01f, 30));
+		m_LocalTransform = glm::translate(m_LocalTransform, translation);
 	}
 };

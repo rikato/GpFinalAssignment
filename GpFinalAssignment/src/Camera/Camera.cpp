@@ -10,7 +10,7 @@ Camera::Camera(glm::vec3 position, GLFWwindow* window)
 	m_Position = position;
 	m_Window = window;
 
-	m_Projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 10000.0f);
+	m_Projection = glm::perspective(glm::radians(45.0f), 1920.0f / 1080.0f, 0.1f, 10000.0f);
 }
 
 Camera::~Camera()

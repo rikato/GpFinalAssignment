@@ -161,6 +161,7 @@
     <ClCompile Include="src\Renderer\Renderer.cpp" />
     <ClCompile Include="src\vendor\glsl\glsl.cpp" />
     <ClCompile Include="src\World\Cosmonaut.h" />
+    <ClCompile Include="src\World\Model.cpp" />
     <ClCompile Include="src\World\Object.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Renderer\Shader.cpp" />
@@ -183,7 +184,8 @@
     <ClInclude Include="src\vendor\glsl\glsl.h" />
     <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h" />
     <ClInclude Include="src\World\CustomDesigned\Flag.h" />
-    <ClInclude Include="src\World\Earth.h" />
+    <ClInclude Include="src\World\Model.h" />
+    <ClInclude Include="src\World\Primitives\Earth.h" />
     <ClInclude Include="src\World\Lander.h" />
     <ClInclude Include="src\World\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />

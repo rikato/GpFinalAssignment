@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "../Object.h"
 
 #include <glad/glad.h>
 #include <math.h>
@@ -37,7 +37,7 @@ public:
 				z
 			));
 
-			normals.push_back(glm::vec3(0, 1, 0));
+			normals.push_back(glm::vec3(0, 0, -1));
 
 			uvs.push_back(
 				glm::vec2(
@@ -67,6 +67,6 @@ public:
 
 		m_Material->AddTexture(diffuse);
 
-		m_Transform = glm::translate(m_Transform, translation);
+		m_LocalTransform = glm::translate(m_LocalTransform, translation);
 	}
 };

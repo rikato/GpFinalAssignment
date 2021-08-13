@@ -11,7 +11,7 @@ Application::Application()
     if (!glfwInit())
         return;
 
-    m_GlfwWindow = glfwCreateWindow(800, 600, "Graphics programming final assignment", NULL, NULL);
+    m_GlfwWindow = glfwCreateWindow(1920, 1080, "Graphics programming final assignment", NULL, NULL);
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -36,7 +36,7 @@ Application::Application()
         return;
     }
 
-    glViewport(0, 0, 800, 600);
+    glViewport(0, 0, 1920, 1080);
 
     // Hide cursor.
     glfwSetInputMode(m_GlfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -73,10 +73,9 @@ void Application::Start()
         // Set the current time as previous time so we can calculate the delta next frame.
         previousFrameTime = currentFrameTime;
 
-        // Update all objects in scene based on camera matrices.
-        for (auto object : scene.m_Objects)
+        for (auto model : scene.GetModels())
         {
-            object->Update(scene.m_Camera->GetViewMatrix(), scene.m_Camera->GetProjectionMatrix());
+            model->Update(scene.m_Camera->GetViewMatrix(), scene.m_Camera->GetProjectionMatrix());
         }
 
         // Swap front and back buffers.
