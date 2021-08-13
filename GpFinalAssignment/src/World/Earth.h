@@ -4,7 +4,7 @@
 #include <math.h>
 #include "../Renderer/Material.h"
 
-# define M_PI 3.14159265358979323846
+#define M_PI 3.14159265358979323846
 
 struct CirclePrimitive
 {
@@ -24,23 +24,27 @@ public:
 
 		vertices.push_back(glm::vec3(x, y, z));
 		normals.push_back(glm::vec3(0, 1, 0));
-
-		uvs.push_back(glm::vec2(x * 0.5 + 0.5 , y * 0.5 + 0.5));
+		uvs.push_back(glm::vec2(.5, .5));
 
 		for (int i = 1; i < sides + 2; i++)
 		{
-			float xVal = x + radius * cos(i * M_PI * 2 / sides);
-			float yVal = y + radius * sin(i * M_PI * 2 / sides);
+			float xVal = (radius * cos(i * M_PI * 2 / sides));
+			float yVal = (radius * sin(i * M_PI * 2 / sides));
 
 			vertices.push_back(glm::vec3(
-				xVal,
-				yVal,
+				x + xVal,
+				y + yVal,
 				z
 			));
 
 			normals.push_back(glm::vec3(0, 1, 0));
 
-			uvs.push_back(glm::vec2((cos(i * 2 * M_PI / sides) + 1) / 2), (sin(i * 2 * M_PI / sides) + 1) / 2);
+			uvs.push_back(
+				glm::vec2(
+					xVal / radius *.5 + .5,
+					yVal / radius * .5 + .5
+				)
+			);
 		}
 
 		return { vertices, normals, uvs };
@@ -49,19 +53,16 @@ public:
 	Earth(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh(
 			// Vertices.
-			Circle(2, 2, 2, 2, 5).m_Vertices,
+			Circle(2, 2, 0, 3, 10).m_Vertices,
 			// Normals.
-			Circle(2, 2, 0, 2, 5).m_Normals,
+			Circle(2, 2, 0, 3, 10).m_Normals,
 			// Uvs.
-			Circle(2, 2, 0, 2, 5).m_Uvs,
+			Circle(2, 2, 0, 3, 10).m_Uvs,
 			GL_TRIANGLE_FAN
 			),
 		new Shader(""),
-		new Material("assets/models/floor/e.bmp"))
+		new Material("assets/models/floor/uvtemplate002-lg.bmp"))
 	{
-		// Scale the floor on x and y axis to match the width of the scene.
 		m_Transform = glm::translate(m_Transform, translation);
-
-		auto x = Circle(2, 2, 0, 2, 6).m_Uvs;
 	}
 };
