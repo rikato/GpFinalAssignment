@@ -60,9 +60,13 @@ public:
 			Circle(0, 0, 0, 1, 20).m_Uvs,
 			GL_TRIANGLE_FAN
 			),
-		new Shader(""),
-		new Material("assets/models/floor/e.bmp"))
+		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
+		new Material())
 	{
+		Texture* diffuse = new Texture(DIFFUSE, "assets/models/earth/earth.bmp", "diffuseMap", *m_Shader);
+
+		m_Material->AddTexture(diffuse);
+
 		m_Transform = glm::translate(m_Transform, translation);
 	}
 };

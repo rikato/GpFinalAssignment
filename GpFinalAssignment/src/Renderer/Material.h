@@ -1,12 +1,18 @@
 #pragma once
 #include <string>
+#include <vector>
+
+#include "../Renderer/Shader.h"
+#include "../Helpers/Texture.h"
 
 class Material 
 {
 public:
-	Material(const std::string &diffusePath);
-	Material(const std::string &diffusePath, const std::string& normalPath);
+	Material();
 
-	int m_TextureId;
-	int m_NormalId;
+	~Material() { std::cout << "dead mat" << std::endl; }
+
+	std::vector<Texture*> m_Textures;
+
+	void AddTexture(Texture* texture);
 };

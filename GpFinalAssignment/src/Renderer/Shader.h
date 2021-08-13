@@ -17,11 +17,10 @@ struct ShaderProgramSource
 class Shader 
 {
 private:
-	std::string m_FilePath;
-	// Chaching uniforms.
+	// Caching uniforms.
 	std::unordered_map<std::string, int> m_UniformLocationCache;
 public:
-	Shader(const::std::string& filePath);
+	Shader(const std::string& filePathVertex, const std::string& filePathFragment);
 	~Shader();
 
 	unsigned int m_RendererId;
@@ -31,12 +30,11 @@ public:
 
 	void UpdateMv(glm::mat4 matrix);
 	void UpdateProjection(glm::mat4 matrix);
-	void SetDiffuseMap(int value);
-private:
 	unsigned int GetUniformLocation(const std::string& name);
-	unsigned int CreateShader();
 	void SetUniformMat4f(const std::string& name, glm::mat4 matrix);
 	void SetUniform3fv(const std::string& name, glm::vec3 value);
 	void SetUniform1i(const std::string& name, int value);
 	void SetUniform1f(const std::string& name, float value);
+private:
+	unsigned int CreateShader(const std::string& filePathVertex, const std::string& filePathFragment);
 };

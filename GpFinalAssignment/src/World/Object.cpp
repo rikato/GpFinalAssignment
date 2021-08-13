@@ -9,9 +9,6 @@ Object::Object(Mesh* mesh, Shader* shader, Material* material)
 	m_Material = material;
 
 	m_Mesh->SetShader(shader);
-
-	// Set the uniform texture for the shader.
-	m_Shader->SetDiffuseMap(m_Material->m_TextureId);
 }
 
 Object::~Object()
@@ -26,14 +23,11 @@ void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
 
 	m_Shader->UpdateMv(viewMatrix * m_Transform);
 	m_Shader->UpdateProjection(projectionMatrix);
-
-	glUniform1i(6, 0);
-	glActiveTexture(GL_TEXTURE0 + 6);
-	glBindTexture(GL_TEXTURE_2D, m_Material->m_NormalId);
-
-	glUniform1i(0, 1);
-	glActiveTexture(GL_TEXTURE0  + 1);
-	glBindTexture(GL_TEXTURE_2D, m_Material->m_TextureId);
+	
+	for (auto texture : m_Material->m_Textures) 
+	{
+		texture->SetActive();
+	}
 
 	m_Mesh->Draw();
 }

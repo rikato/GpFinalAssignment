@@ -9,10 +9,10 @@
 #include "Renderer.h"
 #include "../vendor/glsl/glsl.h"
 
-Shader::Shader(const::std::string& filePath)
-	:m_FilePath(filePath), m_RendererId(0)
+Shader::Shader(const std::string& filePathVertex, const std::string& filePathFragment)
+	: m_RendererId(0)
 {
-	m_RendererId = CreateShader();
+	m_RendererId = CreateShader(filePathVertex, filePathFragment);
 }
 
 Shader::~Shader()
@@ -20,12 +20,12 @@ Shader::~Shader()
 	GLCall(glDeleteProgram(m_RendererId));
 }
 
-unsigned int Shader::CreateShader()
+unsigned int Shader::CreateShader(const std::string& filePathVertex, const std::string& filePathFragment)
 {
 	unsigned int program = glCreateProgram();
 
-	char* vs = glsl::readFile("assets/shaders/vertexshader.shader");
-	char* fs = glsl::readFile("assets/shaders/fragmentshader.shader");
+	char* vs = glsl::readFile(&filePathVertex[0]);
+	char* fs = glsl::readFile(&filePathFragment[0]);
 
 	unsigned int vsId = glsl::makeVertexShader(vs);
 	unsigned int fsId = glsl::makeFragmentShader(fs);
@@ -113,10 +113,4 @@ void Shader::UpdateMv(glm::mat4 matrix)
 void Shader::UpdateProjection(glm::mat4 matrix)
 {
 	SetUniformMat4f("projection", matrix);
-}
-
-void Shader::SetDiffuseMap(int value)
-{
-	SetUniform1i("diffuseMap", value);
-	SetUniform1i("normalMap", value);
 }

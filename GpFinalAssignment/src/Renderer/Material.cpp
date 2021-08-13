@@ -1,22 +1,13 @@
 #include "Material.h"
-#include "../vendor/texture/Texture.h"
+
 #include <glad/glad.h>
 
-Material::Material(const std::string& diffusePath)
+Material::Material()
 {
-	glBindTexture(GL_TEXTURE_2D, 0);
 
-	m_TextureId = loadBMP(&diffusePath[0]);
 }
 
-Material::Material(const std::string& diffusePath, const std::string& normalPath)
+void Material::AddTexture(Texture* texture)
 {
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	m_TextureId = loadBMP(&diffusePath[0]);
-
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	m_NormalId = loadBMP(&normalPath[0]);
+	m_Textures.push_back(texture);
 }
-
