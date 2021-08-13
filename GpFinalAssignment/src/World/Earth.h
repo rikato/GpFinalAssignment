@@ -53,15 +53,15 @@ public:
 	Earth(glm::vec3 translation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh(
 			// Vertices.
-			Circle(2, 2, 0, 3, 10).m_Vertices,
+			Circle(0, 0, 0, 1, 20).m_Vertices,
 			// Normals.
-			Circle(2, 2, 0, 3, 10).m_Normals,
+			Circle(0, 0, 0, 1, 20).m_Normals,
 			// Uvs.
-			Circle(2, 2, 0, 3, 10).m_Uvs,
+			Circle(0, 0, 0, 1, 20).m_Uvs,
 			GL_TRIANGLE_FAN
 			),
 		new Shader(""),
-		new Material("assets/models/floor/uvtemplate002-lg.bmp"))
+		new Material("assets/models/floor/e.bmp"))
 	{
 		m_Transform = glm::translate(m_Transform, translation);
 	}

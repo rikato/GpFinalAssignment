@@ -57,6 +57,8 @@ unsigned int loadBMP(const char* imagepath)
     // Everything is in memory now, the file wan be closed
     fclose(file);
 
+    glActiveTexture(GL_TEXTURE0 + 0);
+
     // Create one OpenGL texture
     GLuint textureID;
     glGenTextures(1, &textureID);

@@ -118,4 +118,5 @@ void Shader::UpdateProjection(glm::mat4 matrix)
 void Shader::SetDiffuseMap(int value)
 {
 	SetUniform1i("diffuseMap", value);
+	SetUniform1i("normalMap", value);
 }
