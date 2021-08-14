@@ -2,18 +2,18 @@
 
 #include "PrimitiveMeshes.h"
 
-class Rope : public Object
+class NuclearWasteSign : public Object
 {
 public:
-	Rope(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
+	NuclearWasteSign(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh(
-			PrimitiveMeshes::Cylinder(0, 0, 1, .6, 10),
-			GL_QUAD_STRIP
+			PrimitiveMeshes::Circle(0, 0, 0, .6, 6),
+			GL_TRIANGLE_FAN
 		),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
 		new Material())
 	{
-		Texture* diffuse = new Texture(DIFFUSE, "assets/models/rope/trashbin.bmp", "diffuseMap", *m_Shader);
+		Texture* diffuse = new Texture(DIFFUSE, "assets/models/nuclear_waste_sign/nuclear_waste_sign.bmp", "diffuseMap", *m_Shader);
 
 		m_Material->AddTexture(diffuse);
 

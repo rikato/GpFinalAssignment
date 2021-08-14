@@ -75,6 +75,9 @@
     <ClCompile Include="src\Renderer\Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\World\Primitives\NuclearWasteSign.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h">
@@ -999,6 +1002,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\World\PulledCosmonaut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\CustomDesigned\WetFloorSign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\CustomDesigned\MovieClapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\CustomDesigned\VoiceCone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\FilmCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

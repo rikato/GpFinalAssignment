@@ -171,10 +171,15 @@
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\objloader\objloader.cpp" />
     <ClCompile Include="src\vendor\stb_image\stb_iamge.cpp" />
+    <ClCompile Include="src\World\Primitives\NuclearWasteSign.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Camera\Camera.h" />
+    <ClInclude Include="src\World\FilmCamera.h" />
+    <ClInclude Include="src\World\CustomDesigned\MovieClapper.h" />
+    <ClInclude Include="src\World\CustomDesigned\VoiceCone.h" />
+    <ClInclude Include="src\World\CustomDesigned\WetFloorSign.h" />
     <ClInclude Include="src\World\Primitives\PrimitiveMeshes.h" />
     <ClInclude Include="src\Renderer\Texture.h" />
     <ClInclude Include="src\Renderer\Animation.h" />

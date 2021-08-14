@@ -1,19 +1,14 @@
-#include "../Object.h"
+#include "Object.h"
 
-#include "PrimitiveMeshes.h"
-
-class Rope : public Object
+class FilmCamera : public Object
 {
 public:
-	Rope(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
-		new Mesh(
-			PrimitiveMeshes::Cylinder(0, 0, 1, .6, 10),
-			GL_QUAD_STRIP
-		),
+	FilmCamera(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
+		new Mesh("assets/models/film_camera/film_camera.3dobj"),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
 		new Material())
 	{
-		Texture* diffuse = new Texture(DIFFUSE, "assets/models/rope/trashbin.bmp", "diffuseMap", *m_Shader);
+		Texture* diffuse = new Texture(DIFFUSE, "assets/models/film_camera/film_camera.bmp", "diffuseMap", *m_Shader);
 
 		m_Material->AddTexture(diffuse);
 
