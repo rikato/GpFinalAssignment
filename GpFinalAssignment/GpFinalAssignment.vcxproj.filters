@@ -998,6 +998,9 @@
     <ClInclude Include="src\World\Primitives\Crate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\World\PulledCosmonaut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">

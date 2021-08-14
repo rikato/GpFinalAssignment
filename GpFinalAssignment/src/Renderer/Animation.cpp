@@ -4,8 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-Animation::Animation(bool infinite)
-	: m_Infinite(infinite)
+Animation::Animation()
 {
 }
 
@@ -19,15 +18,6 @@ void Animation::AddKeyFrame(KeyFrame keyframe)
 	m_keyFrames.push_back(keyframe);
 }
 
-void Animation::Start()
-{
-	
-}
-
-void Animation::Stop()
-{
-}
-
 void Animation::NextKeyFrame() 
 {
 	// Reset the key frame delta for the next frame.
@@ -37,9 +27,6 @@ void Animation::NextKeyFrame()
 	{
 		// When this was the last keyframe we reset it.
 		Reset();
-		
-		// Start the animation again if infinite flag was set.
-		m_Infinite ? Start() : Stop();
 	}
 	else 
 	{

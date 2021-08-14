@@ -23,7 +23,7 @@ public:
 		),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
 		new Material(),
-		new Animation(true))
+		new Animation())
 	{
 		Texture* diffuse = new Texture(DIFFUSE, "assets/models/earth/earth.bmp", "diffuseMap", *m_Shader);
 

@@ -20,11 +20,10 @@ public:
 
 		m_Material->AddTexture(diffuse);
 
-		m_LocalTransform = glm::translate(m_LocalTransform, translation);
-
 		m_LocalTransform = glm::rotate(m_LocalTransform, glm::radians(rotation.x), glm::vec3(1, 0, 0));
 		m_LocalTransform = glm::rotate(m_LocalTransform, glm::radians(rotation.y), glm::vec3(0, 1, 0));
 		m_LocalTransform = glm::rotate(m_LocalTransform, glm::radians(rotation.z), glm::vec3(0, 0, 1));
 
+		m_LocalTransform = glm::translate(m_LocalTransform, translation);
 	}
 };

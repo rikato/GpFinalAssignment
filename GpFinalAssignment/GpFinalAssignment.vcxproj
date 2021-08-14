@@ -479,6 +479,7 @@
     <ClInclude Include="src\World\MoonSurface.h" />
     <ClInclude Include="src\World\Primitives\Floor.h" />
     <ClInclude Include="src\World\Primitives\Rope.h" />
+    <ClInclude Include="src\World\PulledCosmonaut.h" />
     <ClInclude Include="src\World\Spotlight.h" />
   </ItemGroup>
   <ItemGroup>
