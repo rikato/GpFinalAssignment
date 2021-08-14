@@ -49,6 +49,7 @@ PrimitiveMesh PrimitiveMeshes::Circle(const float x, const float y, const float 
 
 	return { vertices, normals, uvs };
 }
+
 PrimitiveMesh PrimitiveMeshes::Cylinder(const float x, const float y, const float z, const float radius, const unsigned int sides)
 {
 	std::vector<glm::vec2> circlePositions = GetCirclePositions(sides);
@@ -86,4 +87,153 @@ PrimitiveMesh PrimitiveMeshes::Cylinder(const float x, const float y, const floa
 	}
 
 	return { vertices, normals, uvs };
-};
+}
+
+PrimitiveMesh PrimitiveMeshes::Cube()
+{
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec3> normals;
+	std::vector<glm::vec2> uvs;
+
+	vertices = {
+		glm::vec3(-1.0f,-1.0f,-1.0f),
+		glm::vec3(-1.0f,-1.0f, 1.0f),
+		glm::vec3(-1.0f, 1.0f, 1.0f),
+		glm::vec3(1.0f, 1.0f,-1.0f),
+		glm::vec3(-1.0f,-1.0f,-1.0f),
+		glm::vec3(-1.0f, 1.0f,-1.0f),
+
+		glm::vec3(1.0f,-1.0f, 1.0f),
+		glm::vec3(-1.0f,-1.0f,-1.0f),
+		glm::vec3(1.0f,-1.0f,-1.0f),
+		glm::vec3(1.0f, 1.0f,-1.0f),
+		glm::vec3(1.0f,-1.0f,-1.0f),
+		glm::vec3(-1.0f,-1.0f,-1.0f),
+
+		glm::vec3(-1.0f,-1.0f,-1.0f),
+		glm::vec3(-1.0f, 1.0f, 1.0f),
+		glm::vec3(-1.0f, 1.0f,-1.0f),
+		glm::vec3(1.0f,-1.0f, 1.0f),
+		glm::vec3(-1.0f,-1.0f, 1.0f),
+		glm::vec3(-1.0f,-1.0f,-1.0f),
+
+		glm::vec3(-1.0f, 1.0f, 1.0f),
+		glm::vec3(-1.0f,-1.0f, 1.0f),
+		glm::vec3(1.0f,-1.0f, 1.0f),
+		glm::vec3(1.0f, 1.0f, 1.0f),
+		glm::vec3(1.0f,-1.0f,-1.0f),
+		glm::vec3(1.0f, 1.0f,-1.0f),
+
+		glm::vec3(1.0f,-1.0f,-1.0f),
+		glm::vec3(1.0f, 1.0f, 1.0f),
+		glm::vec3(1.0f,-1.0f, 1.0f),
+		glm::vec3(1.0f, 1.0f, 1.0f),
+		glm::vec3(1.0f, 1.0f,-1.0f),
+		glm::vec3(-1.0f, 1.0f,-1.0f),
+
+		glm::vec3(1.0f, 1.0f, 1.0f),
+		glm::vec3(-1.0f, 1.0f,-1.0f),
+		glm::vec3(-1.0f, 1.0f, 1.0f),
+		glm::vec3(1.0f, 1.0f, 1.0f),
+		glm::vec3(-1.0f, 1.0f, 1.0f),
+		glm::vec3(1.0f,-1.0f, 1.0f),
+	};
+
+	normals = 
+	{
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0)
+	};
+
+	uvs =
+	{
+		glm::vec2(1, 1),
+		glm::vec2(1, 0),
+		glm::vec2(0, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 0),
+		glm::vec2(1, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 0),
+		glm::vec2(0, 1),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 1),
+		glm::vec2(0, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 0),
+		glm::vec2(0, 1),
+
+		glm::vec2(1, 1),
+		glm::vec2(1, 0),
+		glm::vec2(0, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 1),
+		glm::vec2(0, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 0),
+		glm::vec2(0, 1),
+
+		glm::vec2(0, 0),
+		glm::vec2(1, 1),
+		glm::vec2(1, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(1, 0),
+		glm::vec2(0, 0),
+
+		glm::vec2(1, 1),
+		glm::vec2(0, 0),
+		glm::vec2(0, 1),
+
+		glm::vec2(1, 1),
+		glm::vec2(1, 0),
+		glm::vec2(0, 0),
+	};
+
+	return { vertices, normals, uvs };
+}

@@ -157,6 +157,7 @@
     <ClCompile Include="src\Helpers\IndexBuffer.cpp" />
     <ClCompile Include="src\Helpers\PrimitiveMeshes.cpp" />
     <ClCompile Include="src\Helpers\Texture.cpp" />
+    <ClCompile Include="src\Renderer\Animation.cpp" />
     <ClCompile Include="src\Renderer\Material.cpp" />
     <ClCompile Include="src\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="src\Helpers\IndexBuffer.h" />
     <ClInclude Include="src\Helpers\PrimitiveMeshes.h" />
     <ClInclude Include="src\Helpers\Texture.h" />
+    <ClInclude Include="src\Renderer\Animation.h" />
     <ClInclude Include="src\Renderer\Material.h" />
     <ClInclude Include="src\Renderer\Mesh.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
@@ -187,6 +189,7 @@
     <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h" />
     <ClInclude Include="src\World\CustomDesigned\Flag.h" />
     <ClInclude Include="src\World\Model.h" />
+    <ClInclude Include="src\World\Primitives\Crate.h" />
     <ClInclude Include="src\World\Primitives\Earth.h" />
     <ClInclude Include="src\World\Lander.h" />
     <ClInclude Include="src\World\Object.h" />
