@@ -22,5 +22,5 @@ private:
 public:
 	static PrimitiveMesh Circle(const float x, const float y, const float z, const float radius, const unsigned int sides);
 	static PrimitiveMesh Cylinder(const float x, const float y, const float z, const float radius, const unsigned int sides);
-	static PrimitiveMesh Cube(const float width, const float length, const float height);
+	static PrimitiveMesh Cube();
 };

@@ -1016,7 +1016,7 @@
     <ClInclude Include="src\Renderer\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\World\Primitives\Cube.h">
+    <ClInclude Include="src\World\Primitives\Crate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

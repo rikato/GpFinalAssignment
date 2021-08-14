@@ -89,7 +89,7 @@ PrimitiveMesh PrimitiveMeshes::Cylinder(const float x, const float y, const floa
 	return { vertices, normals, uvs };
 }
 
-PrimitiveMesh PrimitiveMeshes::Cube(const float width, const float length, const float height)
+PrimitiveMesh PrimitiveMeshes::Cube()
 {
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec3> normals;

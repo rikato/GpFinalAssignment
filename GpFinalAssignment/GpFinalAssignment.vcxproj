@@ -189,7 +189,7 @@
     <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h" />
     <ClInclude Include="src\World\CustomDesigned\Flag.h" />
     <ClInclude Include="src\World\Model.h" />
-    <ClInclude Include="src\World\Primitives\Cube.h" />
+    <ClInclude Include="src\World\Primitives\Crate.h" />
     <ClInclude Include="src\World\Primitives\Earth.h" />
     <ClInclude Include="src\World\Lander.h" />
     <ClInclude Include="src\World\Object.h" />

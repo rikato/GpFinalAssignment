@@ -6,7 +6,7 @@
 #include "../World/Primitives/Floor.h"
 #include "../World/Primitives/Earth.h"
 #include "../World/Primitives/Rope.h"
-#include "../World/Primitives/Cube.h"
+#include "../World/Primitives/Crate.h"
 #include "../World/CustomDesigned/Flag.h"
 #include "../World/CustomDesigned/UniverseBoard.h"
 
@@ -16,7 +16,7 @@ Scene::Scene(GLFWwindow *window)
 	m_Camera = new Camera(glm::vec3(0, 0, 0), window);
 
 	// Scene objects (6 uniques).
-	//MoonSurface* moonSurface = new MoonSurface(glm::vec3(0, 0.28, 0));
+	MoonSurface* moonSurface = new MoonSurface(glm::vec3(0, 0.28, 0));
 	Lander* lander = new Lander(glm::vec3(0, 2.49, 3));
 	Cosmonaut* buzz = new Cosmonaut(glm::vec3(2.27, 0.07, 0), glm::vec3(0, 45, 0));
 	Cosmonaut* neil = new Cosmonaut(glm::vec3(-1.27, 0.07, 0));
@@ -40,14 +40,17 @@ Scene::Scene(GLFWwindow *window)
 	Floor* floor = new Floor();
 	Earth* earth= new Earth(glm::vec3(4, 1.5, -0.5));
 	Rope* rope = new Rope(glm::vec3(4, 4, -0.4), glm::vec3(90, 0, 0));
-	Cube* cube = new Cube(glm::vec3(0, 2, -10));
-	// FakeEarthString* fakeEarthString = new FakeEarthString(glm::vec3(0, 0, 0));
+	Crate* crate1 = new Crate(glm::vec3(1, 1, 0), glm::vec3(0, 45, 0));
+	Crate* crate2 = new Crate(glm::vec3(-1, 1, 0), glm::vec3(0, 45, 0));
+	Crate* crate3 = new Crate(glm::vec3(0, 3, 0), glm::vec3(0, 45, 0));
 
 	// The whole set that is staging the moon landing.
-	Model* moonLandingSet = new Model({ lander, buzz, neil, spotlightLeft, spotlightRight, flag }, glm::vec3(0, 0, 11));
+	Model* moonLandingSet = new Model({ moonSurface, lander, buzz, neil, spotlightLeft, spotlightRight, flag }, glm::vec3(0, 0, 11));
 
 	// The fake earth hanging from the roof consisting of 4 primitve meshes.
-	Model* fakeUniverse = new Model({ universeBoard, rope, earth, cube }, glm::vec3(0, 0, 20));
+	Model* fakeUniverse = new Model({ universeBoard, rope, earth }, glm::vec3(0, 0, 20));
+	
+	Model* crates = new Model({ crate1, crate2, crate3 }, glm::vec3(10, 0, 16));
 
 	// The floor of the scene
 	Model* woodenFloor = new Model({ floor}, glm::vec3(-15, 0, -0.1));
@@ -55,6 +58,7 @@ Scene::Scene(GLFWwindow *window)
 	m_Models.push_back(moonLandingSet);
 	m_Models.push_back(fakeUniverse);
 	m_Models.push_back(woodenFloor);
+	m_Models.push_back(crates);
 }
 
 Scene::~Scene()
