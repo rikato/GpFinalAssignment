@@ -11,7 +11,7 @@ class Rope : public Object
 public:
 	Rope(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh(
-			PrimitiveMeshes::Cylinder(0, 0, 5, .1, 6),
+			PrimitiveMeshes::Cylinder(0, 0, 5, .05, 10),
 			GL_QUAD_STRIP
 		),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),

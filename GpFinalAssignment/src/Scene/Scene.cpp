@@ -16,11 +16,11 @@ Scene::Scene(GLFWwindow *window)
 
 	// Scene objects (6 uniques).
 	//MoonSurface* moonSurface = new MoonSurface(glm::vec3(0, 0.28, 0));
-	Lander* lander = new Lander(glm::vec3(0, 2.49, 3));
-	Cosmonaut* buzz = new Cosmonaut(glm::vec3(2.27, 0.07, 0), glm::vec3(0, 45, 0));
-	Cosmonaut* neil = new Cosmonaut(glm::vec3(-1.27, 0.07, 0));
-	Spotlight* spotlightLeft = new Spotlight(glm::vec3(-1.3, 0, -5.7));
-	Spotlight* spotlightRight = new Spotlight(glm::vec3(1.3, 0, -5.7));
+	//Lander* lander = new Lander(glm::vec3(0, 2.49, 3));
+	//Cosmonaut* buzz = new Cosmonaut(glm::vec3(2.27, 0.07, 0), glm::vec3(0, 45, 0));
+	//Cosmonaut* neil = new Cosmonaut(glm::vec3(-1.27, 0.07, 0));
+	//Spotlight* spotlightLeft = new Spotlight(glm::vec3(-1.3, 0, -5.7));
+	//Spotlight* spotlightRight = new Spotlight(glm::vec3(1.3, 0, -5.7));
 	//Tripod* tripod = new Tripod(glm::vec3(0, 0, 0));
     //FilmCamera* camera = new FilmCamera(glm::vec3(0, 0, 0));
  
@@ -36,28 +36,23 @@ Scene::Scene(GLFWwindow *window)
 	// VoiceCone* voiceCone = new VoiceCone(glm::vec3(0, 0, 0));
 
 	// Custom primitive meshes (4).
-	Floor* floor = new Floor();
-	Earth* earth= new Earth(glm::vec3(4, 1.5, -.5));
-
-	Rope* rope = new Rope(glm::vec3(0, 0, 0), glm::vec3(90, 0, 0));
+	//Floor* floor = new Floor();
+	Earth* earth= new Earth(glm::vec3(4, 1.5, -0.5));
+	//Rope* rope = new Rope(glm::vec3(4, 4, -0.4), glm::vec3(90, 0, 0));
 	// FakeEarthString* fakeEarthString = new FakeEarthString(glm::vec3(0, 0, 0));
 
 	// The whole set that is staging the moon landing.
-	Model* moonLandingSet = new Model({ lander, buzz, neil, spotlightLeft, spotlightRight, flag }, glm::vec3(0, 0, 11));
+	//Model* moonLandingSet = new Model({ lander, buzz, neil, spotlightLeft, spotlightRight, flag }, glm::vec3(0, 0, 11));
 
 	// The fake earth hanging from the roof consisting of 4 primitve meshes.
-	Model* fakeUniverse = new Model({ universeBoard, earth }, glm::vec3(0, 0, 20));
-	
-	
-	Model* cylinder = new Model({ rope }, glm::vec3(0, 0, 0));
-	
-	// The floor of the scene
-	Model* woodenFloor = new Model({ floor}, glm::vec3(-15, 0, -0.1));
+	Model* fakeUniverse = new Model({ flag }, glm::vec3(0, 0, 20));
 
-	m_Models.push_back(moonLandingSet);
+	// The floor of the scene
+	//Model* woodenFloor = new Model({ floor}, glm::vec3(-15, 0, -0.1));
+
+	//m_Models.push_back(moonLandingSet);
 	m_Models.push_back(fakeUniverse);
-	m_Models.push_back(cylinder);
-	m_Models.push_back(woodenFloor);
+	//m_Models.push_back(woodenFloor);
 }
 
 Scene::~Scene()
