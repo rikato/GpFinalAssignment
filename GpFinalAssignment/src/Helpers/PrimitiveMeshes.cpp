@@ -49,6 +49,7 @@ PrimitiveMesh PrimitiveMeshes::Circle(const float x, const float y, const float 
 
 	return { vertices, normals, uvs };
 }
+
 PrimitiveMesh PrimitiveMeshes::Cylinder(const float x, const float y, const float z, const float radius, const unsigned int sides)
 {
 	std::vector<glm::vec2> circlePositions = GetCirclePositions(sides);

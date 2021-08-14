@@ -9,7 +9,7 @@ struct  KeyFrame
 	glm::mat4 m_StartTransform;
 	// The ending transform of this keyframe.
 	glm::mat4 m_EndTransform;
-	// The time it takes to complete this animation.
+	// The time it takes to complete this animation in seconds.
 	float length;
 };
 
@@ -18,6 +18,7 @@ class Animation
 private: 
 	float m_Speed;
 	bool m_Infinite;
+	float m_frameTime = 0.0f;
 
 	std::vector<KeyFrame> m_keyFrames;
 	int m_ActiveKeyFrameIndex = 0;

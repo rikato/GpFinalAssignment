@@ -1,6 +1,7 @@
 #include "Animation.h"
 
 #include <glm/gtx/matrix_interpolation.hpp>
+#include <GLFW/glfw3.h>
 
 Animation::Animation(float animationSpeed, bool infinite)
 	: m_Speed(animationSpeed), m_Infinite(infinite)
@@ -52,10 +53,16 @@ glm::mat4 Animation::Animate()
 	// Interpolate between the current key frame start and end-transform based on key frame delta.
 	transformState = glm::interpolate(keyFrame.m_StartTransform, keyFrame.m_EndTransform, m_KeyFrameDelta);
 
-	// Update the key frame delta by the animation speed.
-	m_KeyFrameDelta += m_Speed;
+	double currentFrameTime = glfwGetTime();
 
-	if (m_KeyFrameDelta >= keyFrame.length) 
+	// Update the delta based on delta time, then normalize this result between 0 and 1.
+	// This way the key frame delta is based on the delta time.
+	m_KeyFrameDelta += (currentFrameTime - m_frameTime) / keyFrame.length;
+
+	m_frameTime = currentFrameTime;
+
+	// When the animation exceeds the key frame time we move to the next frame.
+	if (m_KeyFrameDelta >= 1) 
 	{
 		NextKeyFrame();
 	}
