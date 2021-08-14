@@ -1428,8 +1428,6 @@
     </None>
     <None Include="assets\shaders\fragment.shader" />
     <None Include="assets\shaders\vertex.shader" />
-    <None Include="assets\shaders\basic.vert" />
-    <None Include="assets\shaders\basic.frag" />
     <None Include="assets\shaders\fragmentNormal.shader" />
   </ItemGroup>
   <ItemGroup>

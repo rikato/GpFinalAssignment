@@ -16,7 +16,7 @@ public:
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
 		new Material())
 	{
-		Texture* diffuse = new Texture(DIFFUSE, "assets/models/cube/wood_cube.bmp", "diffuseMap", *m_Shader);
+		Texture* diffuse = new Texture(DIFFUSE, "assets/models/crate/crate.bmp", "diffuseMap", *m_Shader);
 
 		m_Material->AddTexture(diffuse);
 
