@@ -36,15 +36,6 @@
     <ClCompile Include="src\Renderer\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Helpers\VertexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Helpers\IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Helpers\VertexArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Renderer\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,13 +63,13 @@
     <ClCompile Include="src\World\Cosmonaut.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Helpers\Texture.cpp">
+    <ClCompile Include="src\Renderer\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\World\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Helpers\PrimitiveMeshes.cpp">
+    <ClCompile Include="src\World\Primitives\PrimitiveMeshes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer\Animation.cpp">
@@ -98,19 +89,7 @@
     <ClInclude Include="src\vendor\texture\TextureLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Helpers\VertexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Renderer\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Helpers\IndexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Helpers\VertexArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Helpers\VertexBufferLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\Shader.h">
@@ -1001,7 +980,7 @@
     <ClInclude Include="src\World\Primitives\Earth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Helpers\Texture.h">
+    <ClInclude Include="src\Renderer\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\World\Model.h">
@@ -1010,7 +989,7 @@
     <ClInclude Include="src\World\Primitives\Rope.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Helpers\PrimitiveMeshes.h">
+    <ClInclude Include="src\World\Primitives\PrimitiveMeshes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\Animation.h">

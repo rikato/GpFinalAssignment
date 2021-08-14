@@ -1,5 +1,4 @@
 #include "Object.h"
-#include "../Renderer/Material.h"
 
 class Lander : public Object
 {

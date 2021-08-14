@@ -5,7 +5,7 @@
 
 #include "glm/glm.hpp" 
 #include "../Renderer/Shader.h"
-#include "../Helpers/PrimitiveMeshes.h"
+#include "../World/Primitives/PrimitiveMeshes.h"
 
 class Mesh {
 private: 

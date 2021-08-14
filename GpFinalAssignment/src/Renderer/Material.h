@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "../Renderer/Shader.h"
-#include "../Helpers/Texture.h"
+#include "../Renderer/Texture.h"
 
 class Material 
 {

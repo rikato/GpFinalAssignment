@@ -4,7 +4,7 @@
 #include <math.h>
 
 #include "../Renderer/Material.h"
-#include "../Helpers/PrimitiveMeshes.h"
+#include "PrimitiveMeshes.h"
 
 class Crate : public Object
 {

@@ -154,9 +154,8 @@
     <ClCompile Include="..\Dependencies\Glad\src\glad.c" />
     <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\Camera\Camera.cpp" />
-    <ClCompile Include="src\Helpers\IndexBuffer.cpp" />
-    <ClCompile Include="src\Helpers\PrimitiveMeshes.cpp" />
-    <ClCompile Include="src\Helpers\Texture.cpp" />
+    <ClCompile Include="src\World\Primitives\PrimitiveMeshes.cpp" />
+    <ClCompile Include="src\Renderer\Texture.cpp" />
     <ClCompile Include="src\Renderer\Animation.cpp" />
     <ClCompile Include="src\Renderer\Material.cpp" />
     <ClCompile Include="src\Renderer\Mesh.cpp" />
@@ -168,8 +167,6 @@
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Renderer\Shader.cpp" />
     <ClCompile Include="src\vendor\texture\TextureLoader.cpp" />
-    <ClCompile Include="src\Helpers\VertexArray.cpp" />
-    <ClCompile Include="src\Helpers\VertexBuffer.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\objloader\objloader.cpp" />
@@ -178,9 +175,8 @@
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Camera\Camera.h" />
-    <ClInclude Include="src\Helpers\IndexBuffer.h" />
-    <ClInclude Include="src\Helpers\PrimitiveMeshes.h" />
-    <ClInclude Include="src\Helpers\Texture.h" />
+    <ClInclude Include="src\World\Primitives\PrimitiveMeshes.h" />
+    <ClInclude Include="src\Renderer\Texture.h" />
     <ClInclude Include="src\Renderer\Animation.h" />
     <ClInclude Include="src\Renderer\Material.h" />
     <ClInclude Include="src\Renderer\Mesh.h" />
@@ -195,9 +191,6 @@
     <ClInclude Include="src\World\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />
     <ClInclude Include="src\Renderer\Shader.h" />
-    <ClInclude Include="src\Helpers\VertexArray.h" />
-    <ClInclude Include="src\Helpers\VertexBuffer.h" />
-    <ClInclude Include="src\Helpers\VertexBufferLayout.h" />
     <ClInclude Include="src\vendor\texture\TextureLoader.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />

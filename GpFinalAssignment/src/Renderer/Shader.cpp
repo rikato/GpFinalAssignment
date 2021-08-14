@@ -17,7 +17,7 @@ Shader::Shader(const std::string& filePathVertex, const std::string& filePathFra
 
 Shader::~Shader()
 {
-	GLCall(glDeleteProgram(m_RendererId));
+	glDeleteProgram(m_RendererId);
 }
 
 unsigned int Shader::CreateShader(const std::string& filePathVertex, const std::string& filePathFragment)
@@ -47,7 +47,7 @@ void Shader::SetUniformMat4f(const std::string& name, glm::mat4 matrix)
 {
 	unsigned int location = GetUniformLocation(name);
 
-	GLCall(glUniformMatrix4fv(location, 1, GL_FALSE, &matrix[0][0]));
+	glUniformMatrix4fv(location, 1, GL_FALSE, &matrix[0][0]);
 }
 
 void Shader::SetUniform3fv(const std::string& name, glm::vec3 value)
@@ -78,7 +78,7 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 		return m_UniformLocationCache[name];
 	}
 
-	GLCall(int location = glGetUniformLocation(m_RendererId, name.c_str()));
+	int location = glGetUniformLocation(m_RendererId, name.c_str());
 
 	if (location == -1)
 	{
@@ -92,12 +92,12 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 
 void Shader::Bind() const
 {
-	GLCall(glUseProgram(m_RendererId));
+	glUseProgram(m_RendererId);
 }
 
 void Shader::UnBind() const
 {
-	GLCall(glUseProgram(0));
+	glUseProgram(0);
 }
 
 void Shader::UpdateMv(glm::mat4 matrix)

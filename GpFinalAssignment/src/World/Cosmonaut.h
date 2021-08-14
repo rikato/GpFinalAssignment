@@ -1,6 +1,4 @@
 #include "Object.h"
-#include "../Renderer/Material.h"
-#include "../Helpers/Texture.h"
 
 class Cosmonaut : public Object
 {
