@@ -6,6 +6,7 @@
 #include "../World/Primitives/Floor.h"
 #include "../World/Primitives/Earth.h"
 #include "../World/Primitives/Rope.h"
+#include "../World/Primitives/Cube.h"
 #include "../World/CustomDesigned/Flag.h"
 #include "../World/CustomDesigned/UniverseBoard.h"
 
@@ -25,7 +26,7 @@ Scene::Scene(GLFWwindow *window)
     //FilmCamera* camera = new FilmCamera(glm::vec3(0, 0, 0));
  
 	// Custom designed objects (5 uniques).
-	Flag* flag = new Flag(glm::vec3(0, 0, -1.88));
+	Flag* flag = new Flag(glm::vec3(0, .5, -0.5));
 	UniverseBoard* universeBoard = new UniverseBoard(glm::vec3(0, 3, 0));
 	// SupportPlank* supportPlank1 = new SupportPlank(glm::vec3(0, 0, 0));
 	// SupportPlank* supportPlank2 = new SupportPlank(glm::vec3(0, 0, 0));
@@ -39,13 +40,14 @@ Scene::Scene(GLFWwindow *window)
 	Floor* floor = new Floor();
 	Earth* earth= new Earth(glm::vec3(4, 1.5, -0.5));
 	Rope* rope = new Rope(glm::vec3(4, 4, -0.4), glm::vec3(90, 0, 0));
+	Cube* cube = new Cube(glm::vec3(0, 2, -10));
 	// FakeEarthString* fakeEarthString = new FakeEarthString(glm::vec3(0, 0, 0));
 
 	// The whole set that is staging the moon landing.
 	Model* moonLandingSet = new Model({ lander, buzz, neil, spotlightLeft, spotlightRight, flag }, glm::vec3(0, 0, 11));
 
 	// The fake earth hanging from the roof consisting of 4 primitve meshes.
-	Model* fakeUniverse = new Model({ universeBoard, rope, earth }, glm::vec3(0, 0, 20));
+	Model* fakeUniverse = new Model({ universeBoard, rope, earth, cube }, glm::vec3(0, 0, 20));
 
 	// The floor of the scene
 	Model* woodenFloor = new Model({ floor}, glm::vec3(-15, 0, -0.1));

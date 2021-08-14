@@ -26,7 +26,7 @@ void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix, double del
 		{
 			glm::mat4 animatedTransform = m_Animation->Animate(deltaTime);
 
-			m_Shader->UpdateMv(viewMatrix * m_LocalTransform * animatedTransform);
+			m_Shader->UpdateMv(viewMatrix *  m_LocalTransform * animatedTransform);
 		}
 		catch (const std::out_of_range& e)
 		{
