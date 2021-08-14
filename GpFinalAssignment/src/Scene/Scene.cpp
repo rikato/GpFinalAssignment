@@ -8,8 +8,11 @@
 #include "../World/Primitives/Earth.h"
 #include "../World/Primitives/Rope.h"
 #include "../World/Primitives/Crate.h"
+#include "../World/Primitives/NuclearWasteSign.h"
 #include "../World/CustomDesigned/Flag.h"
 #include "../World/CustomDesigned/UniverseBoard.h"
+#include "../World/CustomDesigned/WetFloorSign.h"
+#include "../World/CustomDesigned/MovieClapper.h"
 
 Scene::Scene(GLFWwindow *window) 
 {
@@ -29,12 +32,12 @@ Scene::Scene(GLFWwindow *window)
 	// Custom designed objects (5 uniques).
 	Flag* flag = new Flag(glm::vec3(0, .5, -0.5));
 	UniverseBoard* universeBoard = new UniverseBoard(glm::vec3(0, 3, 0));
+	WetFloorSign* wetFloorSign = new WetFloorSign(glm::vec3(-4, 0.434748, 0), glm::vec3(0, -45, 0));
+	MovieClapper* movieClapper = new MovieClapper(glm::vec3(0, 0.202, 0));
 	// SupportPlank* supportPlank1 = new SupportPlank(glm::vec3(0, 0, 0));
 	// SupportPlank* supportPlank2 = new SupportPlank(glm::vec3(0, 0, 0));
 	// SupportPlank* supportPlank3 = new SupportPlank(glm::vec3(0, 0, 0));
 	// DirectorChair* directorChair = new DirectorChair(glm::vec3(0, 0, 0));
-	// MovieClapper* movieClapper = new MovieClapper(glm::vec3(0, 0, 0));
-	// MovieClapper* movieClapper = new MovieClapper(glm::vec3(0, 0, 0));
 	// VoiceCone* voiceCone = new VoiceCone(glm::vec3(0, 0, 0));
 
 	// Custom primitive meshes (4).
@@ -44,6 +47,7 @@ Scene::Scene(GLFWwindow *window)
 	Crate* crate1 = new Crate(glm::vec3(1, 1, -0.6), glm::vec3(0, 45, 0));
 	Crate* crate2 = new Crate(glm::vec3(-1, 1, -1.2), glm::vec3(0, 45, 0));
 	Crate* crate3 = new Crate(glm::vec3(0, 3, -0.3), glm::vec3(0, 45, 0));
+	NuclearWasteSign* nuclearWasteSign = new NuclearWasteSign(glm::vec3(0, 3, -1.4), glm::vec3(0, 45, 0));
 
 	// The whole set that is staging the moon landing.
 	Model* moonLandingSet = new Model({  lander, buzz, neil, spotlightLeft, spotlightRight, flag }, glm::vec3(0, 0, 11));
@@ -51,10 +55,12 @@ Scene::Scene(GLFWwindow *window)
 	// The fake earth hanging from the roof consisting of 4 primitve meshes.
 	Model* fakeUniverse = new Model({ universeBoard, rope, earth }, glm::vec3(0, 0, 20));
 	
-	Model* crates = new Model({ crate1, crate2, crate3, rope }, glm::vec3(10, 0, 16));
+	Model* crates = new Model({ crate1, crate2, crate3, rope, nuclearWasteSign, wetFloorSign }, glm::vec3(10, 0, 16));
 
 	// The floor of the scene
-	Model* woodenFloor = new Model({ floor}, glm::vec3(-15, 0, -0.1));
+	Model* woodenFloor = new Model({ floor }, glm::vec3(-15, 0, -0.1));
+
+	Model* DirectorAndCamera = new Model({ movieClapper }, glm::vec3(0, 0, 4));
 
 	m_Models.push_back(moonLandingSet);
 	m_Models.push_back(fakeUniverse);
