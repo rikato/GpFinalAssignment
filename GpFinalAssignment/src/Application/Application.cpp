@@ -65,17 +65,18 @@ void Application::Start()
         renderer.Clear();
 
         // Get the current time of this frame and store it.
-        double currentFrameTime = glfwGetTime();
+        double currentFrameTime = glfwGetTime();    
+        double deltaTime = currentFrameTime - previousFrameTime;
 
         // Update the camera and calculate the delta time between frames.
-        scene.m_Camera->Update(currentFrameTime - previousFrameTime);
+        scene.m_Camera->Update(deltaTime);
 
         // Set the current time as previous time so we can calculate the delta next frame.
         previousFrameTime = currentFrameTime;
 
         for (auto model : scene.GetModels())
         {
-            model->Update(scene.m_Camera->GetViewMatrix(), scene.m_Camera->GetProjectionMatrix());
+            model->Update(scene.m_Camera->GetViewMatrix(), scene.m_Camera->GetProjectionMatrix(), deltaTime);
         }
 
         // Swap front and back buffers.

@@ -10,7 +10,7 @@ public:
 	Object(Mesh* mesh, Shader* shader, Material* material, Animation* animation = NULL);
 	~Object();
 
-	void Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix);
+	void Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix, double deltaTime);
 
 	Mesh* m_Mesh;
 	Shader* m_Shader;

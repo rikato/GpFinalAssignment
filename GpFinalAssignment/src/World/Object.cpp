@@ -13,7 +13,7 @@ Object::~Object()
 	delete m_Shader;
 }
 
-void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
+void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix, double deltaTime)
 {
 	m_Shader->Bind();
 
@@ -21,7 +21,7 @@ void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
 	// we need to update the objects local transform.
 	if (m_Animation)
 	{
-		m_Shader->UpdateMv(viewMatrix * m_LocalTransform * m_Animation->Animate());
+		m_Shader->UpdateMv(viewMatrix * m_LocalTransform * m_Animation->Animate(deltaTime));
 	}
 	else 
 	{

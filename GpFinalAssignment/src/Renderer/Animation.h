@@ -16,9 +16,7 @@ struct  KeyFrame
 class Animation 
 {
 private: 
-	float m_Speed;
 	bool m_Infinite;
-	float m_frameTime = 0.0f;
 
 	std::vector<KeyFrame> m_keyFrames;
 	int m_ActiveKeyFrameIndex = 0;
@@ -26,11 +24,11 @@ private:
 
 	void Reset();
 public:
-	Animation(float animationSpeed, bool infinite = false);
+	Animation(bool infinite = false);
 
 	void AddKeyFrame(KeyFrame keyframe);
 	void NextKeyFrame();
 	void Start();
 	void Stop();
-	glm::mat4 Animate();
+	glm::mat4 Animate(double deltaTime);
 };
