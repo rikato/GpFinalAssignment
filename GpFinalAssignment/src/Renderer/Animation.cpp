@@ -51,12 +51,12 @@ void Animation::NextKeyFrame()
 glm::mat4 Animation::Animate(double deltaTime)
 {
 	// Get the current key frame.	
-	KeyFrame keyFrame = m_keyFrames[m_ActiveKeyFrameIndex];
+	KeyFrame keyFrame = m_keyFrames.at(m_ActiveKeyFrameIndex);
 
 	glm::mat4 transformState;
 
-	// Interpolate between the current key frame start and end-transform based on key frame delta.
-	transformState = glm::interpolate(keyFrame.m_StartTransform, keyFrame.m_EndTransform, m_KeyFrameDelta);
+	// Interpolate between the current key frame transform and the previous or local transform based on key frame delta.
+	transformState = glm::interpolate(m_ActiveKeyFrameIndex == 0 ? m_LocalTransform : m_keyFrames[m_ActiveKeyFrameIndex - 1].m_Transform, keyFrame.m_Transform, m_KeyFrameDelta);
 
 	// Update the delta based on delta time, then normalize this result between 0 and 1.
 	// This way the key frame delta is based on the delta time.
@@ -65,9 +65,13 @@ glm::mat4 Animation::Animate(double deltaTime)
 	// When the animation exceeds the key frame time we move to the next frame.
 	if (m_KeyFrameDelta >= 1) 
 	{
-		std::cout << "Next frame, current frame: " << m_ActiveKeyFrameIndex << " " << deltaTime << std::endl;
 		NextKeyFrame();
 	}
 
 	return transformState;
+}
+
+void Animation::SetLocalTransform(glm::mat4 transform)
+{
+	m_LocalTransform = transform;
 }

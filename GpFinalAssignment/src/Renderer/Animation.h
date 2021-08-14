@@ -5,10 +5,8 @@
 
 struct  KeyFrame
 {
-	// The starting transform of this keyframe.
-	glm::mat4 m_StartTransform;
 	// The ending transform of this keyframe.
-	glm::mat4 m_EndTransform;
+	glm::mat4 m_Transform;
 	// The time it takes to complete this animation in seconds.
 	float length;
 };
@@ -17,6 +15,7 @@ class Animation
 {
 private: 
 	bool m_Infinite;
+	glm::mat4 m_LocalTransform;
 
 	std::vector<KeyFrame> m_keyFrames;
 	int m_ActiveKeyFrameIndex = 0;
@@ -31,4 +30,5 @@ public:
 	void Start();
 	void Stop();
 	glm::mat4 Animate(double deltaTime);
+	void SetLocalTransform(glm::mat4 transform);
 };

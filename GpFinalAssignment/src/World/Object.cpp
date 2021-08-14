@@ -1,5 +1,6 @@
 #include "Object.h"
 #include <glad/glad.h>
+#include <stdexcept>
 
 Object::Object(Mesh* mesh, Shader* shader, Material* material, Animation* animation)
 	:m_Mesh(mesh), m_Shader(shader), m_LocalTransform(glm::translate(glm::mat4(1.0), glm::vec3(0, 0, 0))), m_Material(material), m_Animation(animation)
@@ -21,7 +22,16 @@ void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix, double del
 	// we need to update the objects local transform.
 	if (m_Animation)
 	{
-		m_Shader->UpdateMv(viewMatrix * m_LocalTransform * m_Animation->Animate(deltaTime));
+		try 
+		{
+			glm::mat4 animatedTransform = m_Animation->Animate(deltaTime);
+
+			m_Shader->UpdateMv(viewMatrix * m_LocalTransform * animatedTransform);
+		}
+		catch (const std::out_of_range& e)
+		{
+			m_Shader->UpdateMv(viewMatrix * m_LocalTransform);
+		}
 	}
 	else 
 	{
