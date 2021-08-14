@@ -155,15 +155,18 @@
     <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\Camera\Camera.cpp" />
     <ClCompile Include="src\Helpers\IndexBuffer.cpp" />
+    <ClCompile Include="src\Helpers\PrimitiveMeshes.cpp" />
+    <ClCompile Include="src\Helpers\Texture.cpp" />
     <ClCompile Include="src\Renderer\Material.cpp" />
     <ClCompile Include="src\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
     <ClCompile Include="src\vendor\glsl\glsl.cpp" />
     <ClCompile Include="src\World\Cosmonaut.h" />
+    <ClCompile Include="src\World\Model.cpp" />
     <ClCompile Include="src\World\Object.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Renderer\Shader.cpp" />
-    <ClCompile Include="src\vendor\texture\Texture.cpp" />
+    <ClCompile Include="src\vendor\texture\TextureLoader.cpp" />
     <ClCompile Include="src\Helpers\VertexArray.cpp" />
     <ClCompile Include="src\Helpers\VertexBuffer.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -175,13 +178,16 @@
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Camera\Camera.h" />
     <ClInclude Include="src\Helpers\IndexBuffer.h" />
+    <ClInclude Include="src\Helpers\PrimitiveMeshes.h" />
+    <ClInclude Include="src\Helpers\Texture.h" />
     <ClInclude Include="src\Renderer\Material.h" />
     <ClInclude Include="src\Renderer\Mesh.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\vendor\glsl\glsl.h" />
     <ClInclude Include="src\World\CustomDesigned\UniverseBoard.h" />
     <ClInclude Include="src\World\CustomDesigned\Flag.h" />
-    <ClInclude Include="src\World\Earth.h" />
+    <ClInclude Include="src\World\Model.h" />
+    <ClInclude Include="src\World\Primitives\Earth.h" />
     <ClInclude Include="src\World\Lander.h" />
     <ClInclude Include="src\World\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />
@@ -189,7 +195,7 @@
     <ClInclude Include="src\Helpers\VertexArray.h" />
     <ClInclude Include="src\Helpers\VertexBuffer.h" />
     <ClInclude Include="src\Helpers\VertexBufferLayout.h" />
-    <ClInclude Include="src\vendor\texture\Texture.h" />
+    <ClInclude Include="src\vendor\texture\TextureLoader.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
@@ -476,13 +482,15 @@
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
     <ClInclude Include="src\World\MoonSurface.h" />
     <ClInclude Include="src\World\Primitives\Floor.h" />
+    <ClInclude Include="src\World\Primitives\Rope.h" />
     <ClInclude Include="src\World\Spotlight.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\basic.frag" />
     <None Include="assets\shaders\basic.vert" />
-    <None Include="assets\shaders\fragmentshader.shader" />
-    <None Include="assets\shaders\vertexshader.shader" />
+    <None Include="assets\shaders\fragment.shader" />
+    <None Include="assets\shaders\fragmentNormal.shader" />
+    <None Include="assets\shaders\vertex.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />

@@ -6,13 +6,17 @@
 #include "../Renderer/Shader.h"
 #include "../Camera/Camera.h"
 #include "../World/Object.h"
+#include "../World/Model.h"
 
 class Scene
 {
+private:
+	std::vector<Model*> m_Models;
 public:
 	Scene(GLFWwindow* window);
 	~Scene();
 
-	std::vector<Object*> m_Objects;
 	Camera* m_Camera;
+
+	const std::vector<Model*> GetModels();
 };
