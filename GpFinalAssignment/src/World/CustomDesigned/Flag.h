@@ -8,7 +8,7 @@ public:
 		new Mesh("assets/models/flag/flag.3dobj"),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
 		new Material(),
-		new Animation(true))
+		new Animation())
 	{
 		Texture* diffuse = new Texture(DIFFUSE, "assets/models/flag/flag.bmp", "diffuseMap", *m_Shader);
 

@@ -14,7 +14,6 @@ struct  KeyFrame
 class Animation 
 {
 private: 
-	bool m_Infinite;
 	glm::mat4 m_LocalTransform;
 
 	std::vector<KeyFrame> m_keyFrames;
@@ -23,12 +22,10 @@ private:
 
 	void Reset();
 public:
-	Animation(bool infinite = false);
+	Animation();
 
 	void AddKeyFrame(KeyFrame keyframe);
 	void NextKeyFrame();
-	void Start();
-	void Stop();
 	glm::mat4 Animate(double deltaTime);
 	void SetLocalTransform(glm::mat4 transform);
 };
