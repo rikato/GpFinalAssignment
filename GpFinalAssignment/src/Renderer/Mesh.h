@@ -5,6 +5,7 @@
 
 #include "glm/glm.hpp" 
 #include "../Renderer/Shader.h"
+#include "../Helpers/PrimitiveMeshes.h"
 
 class Mesh {
 private: 
@@ -20,7 +21,7 @@ private:
 	void Create();
 public:
 	Mesh(const std::string& path);
-	Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec3> normals, std::vector<glm::vec2> uvs, char drawingMode = GL_TRIANGLES);
+	Mesh(PrimitiveMesh primitiveMesh, char drawingMode = GL_TRIANGLES);
 
 	void SetShader(Shader* shader);
 	void Draw();

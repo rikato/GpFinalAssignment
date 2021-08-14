@@ -78,6 +78,9 @@
     <ClCompile Include="src\World\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Helpers\PrimitiveMeshes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Application.h">
@@ -999,6 +1002,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\World\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Primitives\Rope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\PrimitiveMeshes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
