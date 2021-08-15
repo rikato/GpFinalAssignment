@@ -6,7 +6,13 @@ public:
 	PulledCosmonaut(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh("assets/models/cosmonauts/cosmonaut.3dobj"),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragmentNormal.shader"),
-		new Material(),
+		new Material(
+			glm::vec3(0.0, 4.0, 4.0),
+			glm::vec3(0.0, 0.0, 0.1),
+			glm::vec3(1.3, 1.3, 1.3),
+			glm::vec3(1, 1, 1),
+			1024
+		),
 		new Animation())
 	{
 		Texture* diffuse = new Texture(DIFFUSE, "assets/models/cosmonauts/cosmonaut.bmp", "diffuseMap", *m_Shader);

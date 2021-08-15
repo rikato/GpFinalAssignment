@@ -38,6 +38,9 @@ void Object::Update(glm::mat4 viewMatrix, glm::mat4 projectionMatrix, double del
 		m_Shader->UpdateMv(viewMatrix * m_LocalTransform);
 	}
 
+	m_Material->BindUniforms(m_Shader);
+
+
 	m_Shader->UpdateProjection(projectionMatrix);
 
 	for (auto texture : m_Material->m_Textures) 

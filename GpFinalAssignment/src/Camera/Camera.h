@@ -27,10 +27,12 @@ private:
 	float m_LastY = 600.0 / 2.0;
 	bool m_FirstMouse = true;
 	bool m_DroneMode = false;
+	bool m_PressedV = false;
 
 	void Translate(double deltaTime);
 	void Rotate(double xpos, double ypos);
 	void RotateUsingKeyboard();
+	void DroneModeState();
 	double* GetMousePositions();
 public:
 	Camera(glm::vec3 position, GLFWwindow* window);

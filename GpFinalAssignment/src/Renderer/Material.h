@@ -1,18 +1,26 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map>
 
 #include "../Renderer/Shader.h"
 #include "../Renderer/Texture.h"
 
 class Material 
 {
-public:
-	Material();
+private:
+	glm::vec3 m_LightPosition;
+	glm::vec3 m_MaterialAmbientColor;
+	glm::vec3 m_MaterialDiffuseColor;
+	glm::vec3 m_MaterialSpecularColor;
+	int m_MaterialRoughness;
 
-	~Material() { std::cout << "dead mat" << std::endl; }
+public:
+	Material(glm::vec3 lightPosition, glm::vec3 materialAmbientColor, glm::vec3 materialDiffuseColor, glm::vec3 materialSpecularColor, int materialRoughness);
+	~Material();
 
 	std::vector<Texture*> m_Textures;
 
 	void AddTexture(Texture* texture);
+	void BindUniforms(Shader* shader);
 };
