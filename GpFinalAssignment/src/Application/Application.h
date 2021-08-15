@@ -6,8 +6,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-const float SCREEN_WIDTH = 1280.0f;
-const float SCREEN_HEIGHT = 720.0f;
+const float SCREEN_WIDTH = 1600.0f;
+const float SCREEN_HEIGHT = 900.0f;
 
 class Application 
 {
