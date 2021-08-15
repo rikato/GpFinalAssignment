@@ -29,6 +29,36 @@ double* Camera::GetMousePositions()
 	return &result[0];
 }
 
+void Camera::DroneModeState()
+{
+	if (!m_DroneMode && m_PressedV && glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_RELEASE)
+	{
+		m_DroneMode = true;
+		m_PressedV = false;
+
+		// Give the camera a nice overview of the scene.
+		m_LastPosition = m_Position;
+		m_Position = glm::vec3(-3, 8, -6);
+		m_Pitch = -35;
+		m_Yaw = 75;
+	}
+
+	if (m_DroneMode && m_PressedV && glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_RELEASE)
+	{
+		m_DroneMode = false;
+		m_PressedV = false;
+
+		// Return to latest location when drone mode gets disabled.
+		m_Position = m_LastPosition;
+	}
+
+	// Check wether user wants to toggle drone mode by pressing 'v'.
+	if (!m_PressedV && glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
+	{
+		m_PressedV = true;
+	}
+}
+
 void Camera::Translate(double deltaTime)
 {
 	const float v = m_MovementSpeed * deltaTime;
@@ -124,35 +154,15 @@ void Camera::Rotate(double xPos, double yPos)
 
 void Camera::Update(double deltaTime)
 {
-	// Check wether user wants to toggle drone mode by pressing 'v'.
-	if (glfwGetKey(m_Window, GLFW_KEY_V) == GLFW_PRESS)
-	{
-		// Toggle drone mode.
-		m_DroneMode = !m_DroneMode;
-		
-		// If drone mode is enabled store the latest location and set a nice overview of the scene.
-		if (m_DroneMode)
-		{
-			m_LastPosition = m_Position;
-			m_Position = glm::vec3(-3, 8, -6);
-			m_Pitch = -35;
-			m_Yaw = 75;
-		}
-		// Otherwise when drone mode is disabled restore latest location.
-		else 
-		{
-			// Return when drone mode gets disabled.
-			m_Position = m_LastPosition;
-		}
-	}
+	DroneModeState();
 
 	// Check for level boundries.
 	if (m_DroneMode)
 	{
 		// When camera goes below the map reset it's position to '0'.
-		if (m_Position.y < 0)
+		if (m_Position.y < 0.5)
 		{
-			m_Position.y = 0;
+			m_Position.y = 0.5;
 		}
 	}
 	else
@@ -173,6 +183,7 @@ void Camera::Update(double deltaTime)
 	// Update last x and last y positions based on keyboard input (IJKL).
 	RotateUsingKeyboard();
 }
+
 
 glm::mat4 Camera::GetProjectionMatrix() const
 {
