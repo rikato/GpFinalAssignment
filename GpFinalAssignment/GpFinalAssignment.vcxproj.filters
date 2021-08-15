@@ -989,7 +989,7 @@
     <ClInclude Include="src\World\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\World\Primitives\Rope.h">
+    <ClInclude Include="src\World\Primitives\MetalTube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\World\Primitives\PrimitiveMeshes.h">

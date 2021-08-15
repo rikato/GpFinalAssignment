@@ -2,12 +2,12 @@
 
 #include "PrimitiveMeshes.h"
 
-class Rope : public Object
+class MetalTube : public Object
 {
 public:
-	Rope(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
+	MetalTube(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh(
-			PrimitiveMeshes::Cylinder(0, 0, 1, .6, 10),
+			PrimitiveMeshes::Cylinder(0, 0, 3, .2, 20),
 			GL_QUAD_STRIP
 		),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
@@ -19,7 +19,7 @@ public:
 			1024
 		))
 	{
-		Texture* diffuse = new Texture(DIFFUSE, "assets/models/rope/trashbin.bmp", "diffuseMap", *m_Shader);
+		Texture* diffuse = new Texture(DIFFUSE, "assets/models/metal_tube/metal_tube.bmp", "diffuseMap", *m_Shader);
 
 		m_Material->AddTexture(diffuse);
 
