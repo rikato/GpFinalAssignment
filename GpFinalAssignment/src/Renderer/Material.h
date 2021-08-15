@@ -16,7 +16,7 @@ private:
 	int m_MaterialRoughness;
 
 public:
-	Material(glm::vec3 lightPosition, glm::vec3 materialAmbientColor, glm::vec3 materialDiffuseColor, glm::vec3 materialSpecularColor, int materialRoughness);
+	Material(glm::vec3 lightPosition, glm::vec3 materialAmbientColor, glm::vec3 materialDiffuseColor, glm::vec3 materialSpecularColor, float materialRoughness);
 	~Material();
 
 	std::vector<Texture*> m_Textures;

@@ -12,16 +12,6 @@
 Shader::Shader(const std::string& filePathVertex, const std::string& filePathFragment)
 	: m_RendererId(0)
 {
-	m_RendererId = CreateShader(filePathVertex, filePathFragment);
-}
-
-Shader::~Shader()
-{
-	glDeleteProgram(m_RendererId);
-}
-
-unsigned int Shader::CreateShader(const std::string& filePathVertex, const std::string& filePathFragment)
-{
 	unsigned int program = glCreateProgram();
 
 	// Load the shaders.
@@ -41,42 +31,21 @@ unsigned int Shader::CreateShader(const std::string& filePathVertex, const std::
 	glDeleteShader(vsId);
 	glDeleteShader(fsId);
 
-	return program;
+	m_RendererId = program;
 }
 
-void Shader::SetUniformMat4f(const std::string& name, glm::mat4 matrix)
+Shader::~Shader()
 {
-	unsigned int location = GetUniformLocation(name);
-
-	glUniformMatrix4fv(location, 1, GL_FALSE, &matrix[0][0]);
-}
-
-void Shader::SetUniform3fv(const std::string& name, glm::vec3 value)
-{
-	unsigned int location = GetUniformLocation(name);
-
-	glUniform3fv(location, 1, &value[0]);
-}
-
-void Shader::SetUniform1i(const std::string& name, int value)
-{
-	unsigned int location = GetUniformLocation(name);
-
-	glUniform1i(location, value);
-}
-
-void Shader::SetUniform1f(const std::string& name, float value)
-{
-	unsigned int location = GetUniformLocation(name);
-
-	glUniform1f(location, value);
+	glDeleteProgram(m_RendererId);
 }
 
 unsigned int Shader::GetUniformLocation(const std::string& name)
 {
-	if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end()) 
+	// If the uniform is already looked ip, wo don't want to search for it again.
+	// Instead we wil just get the uniform location from the uniformLocations map and return it.
+	if (m_UniformLocations.find(name) != m_UniformLocations.end())
 	{
-		return m_UniformLocationCache[name];
+		return m_UniformLocations[name];
 	}
 
 	int location = glGetUniformLocation(m_RendererId, name.c_str());
@@ -86,7 +55,8 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 		std::cout << "Uniform location not found." << std::endl;
 	}
 
-	m_UniformLocationCache[name] = location;
+	// Add the location to the uniformLocations so it can be used next time wel look for the same uniform.
+	m_UniformLocations[name] = location;
 
 	return location;
 }
@@ -99,11 +69,11 @@ void Shader::Bind() const
 
 void Shader::UpdateMv(glm::mat4 matrix)
 {
-	SetUniformMat4f("mv", matrix);
+	SetUniform<glm::mat4>("mv", matrix);
 }
 
 void Shader::UpdateProjection(glm::mat4 matrix)
 {
-	SetUniformMat4f("projection", matrix);
+	SetUniform<glm::mat4>("projection", matrix);
 }
 
