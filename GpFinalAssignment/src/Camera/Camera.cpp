@@ -37,8 +37,8 @@ void Camera::DroneModeState()
 
 		// Give the camera a nice overview of the scene.
 		m_LastPosition = m_Position;
-		m_Position = glm::vec3(-3, 8, -6);
-		m_Pitch = -35;
+		m_Position = glm::vec3(-7, 8, -7);
+		m_Pitch = -15;
 		m_Yaw = 75;
 	}
 
