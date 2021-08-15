@@ -24,6 +24,7 @@ unsigned int Shader::CreateShader(const std::string& filePathVertex, const std::
 {
 	unsigned int program = glCreateProgram();
 
+	// Load the shaders.
 	char* vs = glsl::readFile(&filePathVertex[0]);
 	char* fs = glsl::readFile(&filePathFragment[0]);
 
@@ -92,6 +93,7 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 
 void Shader::Bind() const
 {
+	// Bind program, this is used every frame.
 	glUseProgram(m_RendererId);
 }
 

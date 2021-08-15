@@ -1,7 +1,8 @@
+#include "../Application/Application.h"
+
+
 #include "Camera.h"
-
 #include <iostream>
-
 #include "glm/gtc/matrix_transform.hpp"
 
 Camera::Camera(glm::vec3 position, GLFWwindow* window)
@@ -10,7 +11,7 @@ Camera::Camera(glm::vec3 position, GLFWwindow* window)
 	m_Position = position;
 	m_Window = window;
 
-	m_Projection = glm::perspective(glm::radians(45.0f), 1920.0f / 1080.0f, 0.1f, 10000.0f);
+	m_Projection = glm::perspective(glm::radians(45.0f), SCREEN_WIDTH  / SCREEN_HEIGHT, 0.1f, 10000.0f);
 }
 
 Camera::~Camera()

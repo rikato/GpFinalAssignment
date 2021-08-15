@@ -8,7 +8,7 @@ public:
 		new Mesh("assets/models/movie_clapper/movie_clapper.3dobj"),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
 		new Material(
-			glm::vec3(0.0, 4.0, 4.0),
+			glm::vec3(0.0, 4.0, -4.0),
 			glm::vec3(0.0, 0.0, 0.1),
 			glm::vec3(1.3, 1.3, 1.3),
 			glm::vec3(1, 1, 1),

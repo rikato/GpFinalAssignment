@@ -1,19 +1,22 @@
 #version 460 core
 
-// Uniform matrices
+// Matrices uniforms.
 uniform mat4 mv;
 uniform mat4 projection;
 uniform vec3 lightPosition;
 
-// Per-vertex inputs
+// Input for vertex.
 in vec3 position;
 in vec3 normal;
 
 out VS_OUT
 {
-    vec3 N; // Normal in view space
-    vec3 L; // Light vector
-    vec3 V; // View-space vector
+    // Normal.
+    vec3 N;
+    // LightPosition. 
+    vec3 L;
+    // Vector.
+    vec3 V;
 }
 vs_out;
 
@@ -24,18 +27,18 @@ void main()
 {
     UV = uv;
 
-    // Calculate view-space coordinate
+    //  View space calculation.
     vec4 P = mv * vec4(position, 1.0);
 
-    // Calculate normal in view-space
+    // View space calculation normal 
     vs_out.N = mat3(mv) * normal;
 
-    // Calculate light vector
+    // Light vector calculation.
     vs_out.L = lightPosition - P.xyz;
 
-    // Calculate view vector;
+    // View vector calculation.
     vs_out.V = -P.xyz;
 
-    // Calculate the clip-space position of each vertex
+    // Clip space.
     gl_Position = projection * P;
 }

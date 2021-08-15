@@ -11,7 +11,7 @@ Application::Application()
     if (!glfwInit())
         return;
 
-    m_GlfwWindow = glfwCreateWindow(1920, 1080, "Graphics programming final assignment", NULL, NULL);
+    m_GlfwWindow = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Graphics programming final assignment", NULL, NULL);
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);

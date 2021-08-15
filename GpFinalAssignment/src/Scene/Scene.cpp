@@ -5,6 +5,7 @@
 #include "../World/PulledCosmonaut.h"
 #include "../World/Spotlight.h"
 #include "../World/FilmCamera.h"
+#include "../World/Table.h"
 #include "../World/Primitives/Floor.h"
 #include "../World/Primitives/Earth.h"
 #include "../World/Primitives/Rope.h"
@@ -29,14 +30,14 @@ Scene::Scene(GLFWwindow *window)
 	Spotlight* spotlightLeft = new Spotlight(glm::vec3(-1.3, 0, -5.7));
 	Spotlight* spotlightRight = new Spotlight(glm::vec3(1.3, 0, -5.7));
 	FilmCamera* filmCamera = new FilmCamera(glm::vec3(0, 1, 0), glm::vec3(0, 180, 0));
-	// DirectorChair* directorChair = new DirectorChair(glm::vec3(0, 0, 0));
+	Table* table = new Table(glm::vec3(1.5, 0, -0.3));
 
 	// Custom designed objects (5 uniques).
 	Flag* flag = new Flag(glm::vec3(0, .5, -0.5));
 	UniverseBoard* universeBoard = new UniverseBoard(glm::vec3(0, 3, 0));
 	WetFloorSign* wetFloorSign = new WetFloorSign(glm::vec3(-4, 0.5, 0), glm::vec3(0, -45, 0));
-	MovieClapper* movieClapper = new MovieClapper(glm::vec3(1, 0.202, 0));
-	VoiceCone* voiceCone = new VoiceCone(glm::vec3(1.4, 0.25, 0));
+	MovieClapper* movieClapper = new MovieClapper(glm::vec3(1.4, 0.91, -0.5));
+	VoiceCone* voiceCone = new VoiceCone(glm::vec3(1.4, 1.03, 0));
 
 	// Custom primitive meshes (5 uniques).
 	Floor* floor = new Floor();
@@ -60,7 +61,7 @@ Scene::Scene(GLFWwindow *window)
 	Model* woodenFloor = new Model({ floor }, glm::vec3(-15, 0, -0.1));
 
 	// The director.
-	Model* DirectorAndCamera = new Model({ movieClapper, voiceCone, filmCamera }, glm::vec3(0, 0, 4));
+	Model* DirectorAndCamera = new Model({ movieClapper, voiceCone, filmCamera, table}, glm::vec3(0, 0, 4));
 
 	m_Models.push_back(moonLandingSet);
 	m_Models.push_back(DirectorAndCamera);

@@ -19,6 +19,7 @@ Texture::Texture(TextureType textureType, const std::string& path, const std::st
 
 void Texture::SetActive()
 {
+	// Set the slot as active texture.
 	glUniform1i(m_UniformLocation, m_Slot);
 	glActiveTexture(GL_TEXTURE0 + m_Slot);
 	glBindTexture(GL_TEXTURE_2D, m_TextureId);

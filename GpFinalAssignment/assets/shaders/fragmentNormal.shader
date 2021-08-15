@@ -1,17 +1,20 @@
 #version 460 core
 
-// Input from vertex shader
+// The input from the vertex shader.
 in VS_OUT
 {
-    vec3 N; // Normal
-    vec3 L; // LightPosition
-    vec3 V; // Vertex
+    // Normal.
+    vec3 N; 
+    // LightPosition.
+    vec3 L; 
+    // Vertex.
+    vec3 V; 
 }
 fs_in;
 
 in vec2 UV;
 
-// Material properties
+// Properties of material.
 uniform vec3 materialAmbientColor;
 uniform vec3 materialDiffuseColor;
 uniform vec3 materialSpecularColor;
@@ -22,19 +25,20 @@ uniform sampler2D normalMap;
 
 void main()
 {
-    // Normalize the incoming N, L and V vectors
+    // Normalize the N, L and V vectors.
     vec3 L = normalize(fs_in.L);
     vec3 V = normalize(fs_in.V);
 
     vec3 normal = normalize(texture2D(normalMap, UV).xyz * 2.0f - 1.0f);
 
-    // Calculate R locally
+    // Calculate reflection local.
     vec3 R = reflect(-L, normal);
 
-    // Compute the diffuse and specular components for each fragment
+    // Diffuse and specular calculations of components for each fragment.
+    // Also taking normal map into account.
     vec3 diffuse = max(dot(normal, L), 0.0) * texture2D(diffuseMap, UV).rgb * materialDiffuseColor;
     vec3 specular = pow(max(dot(R, V), 0.0), materialRoughness) * materialSpecularColor;
 
-    // Write final color to the framebuffer
+    // Color to the framebuffer,
     gl_FragColor = vec4(materialAmbientColor + diffuse + specular, 1.0);
 } 

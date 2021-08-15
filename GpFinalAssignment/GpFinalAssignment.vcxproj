@@ -486,6 +486,7 @@
     <ClInclude Include="src\World\Primitives\Rope.h" />
     <ClInclude Include="src\World\PulledCosmonaut.h" />
     <ClInclude Include="src\World\Spotlight.h" />
+    <ClInclude Include="src\World\Table.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\fragment.shader" />
