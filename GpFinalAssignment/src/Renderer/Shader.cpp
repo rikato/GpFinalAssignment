@@ -82,7 +82,7 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 
 	if (location == -1)
 	{
-		std::cout << "Warning: uniform location does not exist." << std::endl;
+		std::cout << "Uniform location not found." << std::endl;
 	}
 
 	m_UniformLocationCache[name] = location;
@@ -95,22 +95,13 @@ void Shader::Bind() const
 	glUseProgram(m_RendererId);
 }
 
-void Shader::UnBind() const
-{
-	glUseProgram(0);
-}
-
 void Shader::UpdateMv(glm::mat4 matrix)
 {
 	SetUniformMat4f("mv", matrix);
-
-	SetUniform3fv("materialAmbientColor", glm::vec3(0.0, 0.0, 0.1));
-	SetUniform3fv("materialDiffuseColor", glm::vec3(1.3, 1.3, 1.3));
-	SetUniform3fv("materialSpecularColor", glm::vec3(1, 1, 1));
-	SetUniform1f("materialRoughness", 1024);
 }
 
 void Shader::UpdateProjection(glm::mat4 matrix)
 {
 	SetUniformMat4f("projection", matrix);
 }
+

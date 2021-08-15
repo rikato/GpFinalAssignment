@@ -7,7 +7,13 @@ public:
 	UniverseBoard(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh("assets/models/universe_board/universeBoard.3dobj"),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
-		new Material())
+		new Material(
+			glm::vec3(0.0, 4.0, 4.0),
+			glm::vec3(0.0, 0.0, 0.1),
+			glm::vec3(1.3, 1.3, 1.3),
+			glm::vec3(1, 1, 1),
+			1024
+		))
 	{
 		Texture* diffuse = new Texture(DIFFUSE, "assets/models/universe_board/universeBoard.bmp", "diffuseMap", *m_Shader);
 

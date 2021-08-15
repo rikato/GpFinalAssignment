@@ -26,7 +26,6 @@ public:
 	unsigned int m_RendererId;
 
 	void Bind() const;
-	void UnBind() const;
 
 	void UpdateMv(glm::mat4 matrix);
 	void UpdateProjection(glm::mat4 matrix);

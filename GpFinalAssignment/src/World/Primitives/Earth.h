@@ -22,7 +22,13 @@ public:
 			GL_TRIANGLE_FAN
 		),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
-		new Material(),
+		new Material(
+			glm::vec3(0.0, 4.0, 4.0),
+			glm::vec3(0.0, 0.0, 0.1),
+			glm::vec3(1.3, 1.3, 1.3),
+			glm::vec3(1, 1, 1),
+			1024
+		),
 		new Animation())
 	{
 		Texture* diffuse = new Texture(DIFFUSE, "assets/models/earth/earth.bmp", "diffuseMap", *m_Shader);

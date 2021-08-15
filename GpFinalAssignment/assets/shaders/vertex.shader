@@ -3,7 +3,7 @@
 // Uniform matrices
 uniform mat4 mv;
 uniform mat4 projection;
-//uniform vec3 lightPosition;
+uniform vec3 lightPosition;
 
 // Per-vertex inputs
 in vec3 position;
@@ -31,7 +31,7 @@ void main()
     vs_out.N = mat3(mv) * normal;
 
     // Calculate light vector
-    vs_out.L = vec3(0, 4, 4) - P.xyz;
+    vs_out.L = lightPosition - P.xyz;
 
     // Calculate view vector;
     vs_out.V = -P.xyz;

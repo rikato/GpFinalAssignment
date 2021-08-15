@@ -7,7 +7,13 @@ public:
 	WetFloorSign(glm::vec3 translation = glm::vec3(0, 0, 0), glm::vec3 rotation = glm::vec3(0, 0, 0)) : Object(
 		new Mesh("assets/models/wet_floor_sign/wet_floor_sign.3dobj"),
 		new Shader("assets/shaders/vertex.shader", "assets/shaders/fragment.shader"),
-		new Material())
+		new Material(
+			glm::vec3(0.0, 4.0, 4.0),
+			glm::vec3(0.0, 0.0, 0.1),
+			glm::vec3(1.3, 1.3, 1.3),
+			glm::vec3(1, 1, 1),
+			1024
+		))
 	{
 		Texture* diffuse = new Texture(DIFFUSE, "assets/models/wet_floor_sign/wet_floor_sign.bmp", "diffuseMap", *m_Shader);
 
