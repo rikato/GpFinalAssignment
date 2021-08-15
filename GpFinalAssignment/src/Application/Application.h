@@ -6,8 +6,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "../Scene/Scene.h"
-
 const float SCREEN_WIDTH = 1280.0f;
 const float SCREEN_HEIGHT = 720.0f;
 

@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "../Scene/Scene.h"
 #include "../Renderer/Renderer.h"
 #include "../vendor/objLoader/objLoader.h"
 #include "../Renderer/Mesh.h"
